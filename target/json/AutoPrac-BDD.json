@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 17975092900,
+              "duration": 12125153000,
               "status": "passed"
             },
             "line": 5,
@@ -23,7 +23,7 @@
           },
           {
             "result": {
-              "duration": 16981886900,
+              "duration": 16193319400,
               "status": "passed"
             },
             "line": 6,
@@ -42,7 +42,7 @@
         ]
       },
       {
-        "start_timestamp": "2021-08-14T09:05:51.250Z",
+        "start_timestamp": "2021-08-14T16:55:32.948Z",
         "line": 9,
         "name": "User want to check url of web application",
         "description": "",
@@ -52,7 +52,7 @@
         "steps": [
           {
             "result": {
-              "duration": 20708100,
+              "duration": 12360500,
               "status": "passed"
             },
             "line": 10,
@@ -70,7 +70,7 @@
           },
           {
             "result": {
-              "duration": 4896309800,
+              "duration": 510428400,
               "status": "passed"
             },
             "line": 11,
@@ -83,10 +83,10 @@
         ],
         "tags": [
           {
-            "name": "@landingPageTest"
+            "name": "@LandingPageTest"
           },
           {
-            "name": "@tag1"
+            "name": "@AssertUrl"
           }
         ]
       },
@@ -99,7 +99,7 @@
         "steps": [
           {
             "result": {
-              "duration": 10618324200,
+              "duration": 1825153800,
               "status": "passed"
             },
             "line": 5,
@@ -111,7 +111,7 @@
           },
           {
             "result": {
-              "duration": 14692129900,
+              "duration": 11470135800,
               "status": "passed"
             },
             "line": 6,
@@ -130,50 +130,32 @@
         ]
       },
       {
-        "start_timestamp": "2021-08-14T09:06:31.269Z",
+        "start_timestamp": "2021-08-14T16:56:01.941Z",
         "line": 14,
-        "name": "user doing Landing Page Title Test",
+        "name": "user Product category validation Test",
         "description": "",
-        "id": "all-test-on-landing-page-of-web-application;user-doing-landing-page-title-test",
+        "id": "all-test-on-landing-page-of-web-application;user-product-category-validation-test",
         "type": "scenario",
         "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "duration": 21996200,
+              "duration": 125210300,
               "status": "passed"
             },
             "line": 15,
-            "name": "user faching title of landing page",
+            "name": "user fetching product catefory list",
             "match": {
-              "location": "stepDepinations.LandingPage.user_faching_title_of_landing_page()"
+              "location": "stepDepinations.LandingPage.user_fetching_product_catefory_list()"
             },
             "keyword": "Then "
           },
           {
             "result": {
-              "duration": 15995700,
+              "duration": 469513900,
               "status": "passed"
             },
             "line": 16,
-            "name": "User assert \"My Store\" titile with corrent page titale",
-            "match": {
-              "arguments": [
-                {
-                  "val": "\"My Store\"",
-                  "offset": 12
-                }
-              ],
-              "location": "stepDepinations.LandingPage.user_assert_titile_with_corrent_page_titale(java.lang.String)"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 706331100,
-              "status": "passed"
-            },
-            "line": 17,
             "name": "close web application",
             "match": {
               "location": "stepDepinations.LandingPage.close_web_application()"
@@ -183,10 +165,110 @@
         ],
         "tags": [
           {
-            "name": "@landingPageTest"
+            "name": "@LandingPageTest"
           },
           {
-            "name": "@test2"
+            "name": "@ProductVlidationTest"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 1937095100,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "user open Web application",
+            "match": {
+              "location": "stepDepinations.LandingPage.user_open_web_application()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 14592831000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "user enter \"http://automationpractice.com/index.php?\" url",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"http://automationpractice.com/index.php?\"",
+                  "offset": 11
+                }
+              ],
+              "location": "stepDepinations.LandingPage.user_enter_url(java.lang.String)"
+            },
+            "keyword": "When "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-08-14T16:56:15.856Z",
+        "line": 19,
+        "name": "user doing Landing Page Title Test",
+        "description": "",
+        "id": "all-test-on-landing-page-of-web-application;user-doing-landing-page-title-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 9216000,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "User assert \"My Store\" title with corrent page title",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"My Store\"",
+                  "offset": 12
+                }
+              ],
+              "location": "stepDepinations.LandingPage.user_assert_title_with_corrent_page_title(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 6120100,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "user fetching title of landing page",
+            "match": {
+              "location": "stepDepinations.LandingPage.user_fetching_title_of_landing_page()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 477548600,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "close web application",
+            "match": {
+              "location": "stepDepinations.LandingPage.close_web_application()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@LandingPageTest"
+          },
+          {
+            "name": "@LandingPageTitleTest"
           }
         ]
       }
@@ -198,7 +280,7 @@
     "uri": "file:src/test/resources/features/LandingPage.feature",
     "tags": [
       {
-        "name": "@landingPageTest",
+        "name": "@LandingPageTest",
         "type": "Tag",
         "location": {
           "line": 1,

@@ -23,7 +23,7 @@ public class Utilites {
 
 	public void assertUrl(String url) {
 		Assert.assertEquals("Url assertion faild", url, driver.getCurrentUrl());
-		System.out.println("User successfuly asserted url and test case passed");
+		System.out.println("User successfully asserted url and test case passed");
 
 	}
 
@@ -31,14 +31,15 @@ public class Utilites {
 		driver.getTitle();
 	}
 
-	public void assertPageTitile(String title)
-	{
+	public void assertPageTitle(String title) {
 		Assert.assertEquals("user unble to asserting page title ", title, driver.getTitle());
+		System.out.println("User Assert Page Title successfully Test case passed.");
 	}
-	
+
 	public void closeDriver() {
 		driver.quit();
 
 	}
+
 
 }

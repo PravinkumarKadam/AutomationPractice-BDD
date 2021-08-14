@@ -9,8 +9,10 @@ import base.Utilites;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.Scenario;
 import pageObjects.InitializeBrowser;
+import pageObjects.LandingPagePageObject;
+import io.cucumber.java.Scenario;
+
 
 
 public class LandingPage {
@@ -24,7 +26,7 @@ public class LandingPage {
 	WebDriver driver = new ChromeDriver();
 	Utilites utilites = new Utilites(driver);
 	InitializeBrowser initializeBrowser = new InitializeBrowser(driver);
-
+	LandingPagePageObject landingPagePageObject = new LandingPagePageObject(driver);
 
 
 
@@ -50,27 +52,43 @@ public class LandingPage {
 	}
 
 	@Then("close web application")
-	public void close_web_application() {
-
+	public void close_web_application() 
+	{
 		utilites.closeDriver();
 		//scn.log("Browser colsed.");
 	}
 
-                                                                          
 
-	@Then("user faching title of landing page")
-	public void user_faching_title_of_landing_page() 
+
+	@Then("user fetching product category list")
+	public void user_fetching_product_category_list() 
+	{
+        landingPagePageObject.productlist();
+        //scn.logo("Product list :: "+ landingPagePageObject.productlist());
+	}
+
+
+	@When("User assert {string} title with corrent page title")
+	public void user_assert_title_with_corrent_page_title(String title) 
+	{
+		utilites.assertPageTitle(title);
+		//scn.logo("User assert Curent page tile succesfully.");
+	}
+
+	@Then("user fetching title of landing page")
+	public void user_fetching_title_of_landing_page() 
 	{
 		utilites.getCurentPageTittle();
-       //scn.log("user faching current page title :" + driver.getTitle());
+		//scn.log("user faching current page title :" + driver.getTitle());
 	}
 
-	@Then("User assert {string} titile with corrent page titale")
-	public void user_assert_titile_with_corrent_page_titale(String titile) 
-	{
-		utilites.assertPageTitile(titile);
-       //scn.logo("User assert Curent page tile succesfully.");
-	}
+
+
+
+
+
+
+
 
 
 }
