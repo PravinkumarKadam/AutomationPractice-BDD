@@ -1,0 +1,210 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 17975092900,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "user open Web application",
+            "match": {
+              "location": "stepDepinations.LandingPage.user_open_web_application()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 16981886900,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "user enter \"http://automationpractice.com/index.php?\" url",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"http://automationpractice.com/index.php?\"",
+                  "offset": 11
+                }
+              ],
+              "location": "stepDepinations.LandingPage.user_enter_url(java.lang.String)"
+            },
+            "keyword": "When "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-08-14T09:05:51.250Z",
+        "line": 9,
+        "name": "User want to check url of web application",
+        "description": "",
+        "id": "all-test-on-landing-page-of-web-application;user-want-to-check-url-of-web-application",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 20708100,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "user assert \"http://automationpractice.com/index.php?\" url to current home page url",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"http://automationpractice.com/index.php?\"",
+                  "offset": 12
+                }
+              ],
+              "location": "stepDepinations.LandingPage.user_assert_url_to_current_home_page_url(java.lang.String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 4896309800,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "close web application",
+            "match": {
+              "location": "stepDepinations.LandingPage.close_web_application()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@landingPageTest"
+          },
+          {
+            "name": "@tag1"
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 10618324200,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "user open Web application",
+            "match": {
+              "location": "stepDepinations.LandingPage.user_open_web_application()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 14692129900,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "user enter \"http://automationpractice.com/index.php?\" url",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"http://automationpractice.com/index.php?\"",
+                  "offset": 11
+                }
+              ],
+              "location": "stepDepinations.LandingPage.user_enter_url(java.lang.String)"
+            },
+            "keyword": "When "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-08-14T09:06:31.269Z",
+        "line": 14,
+        "name": "user doing Landing Page Title Test",
+        "description": "",
+        "id": "all-test-on-landing-page-of-web-application;user-doing-landing-page-title-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 21996200,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "user faching title of landing page",
+            "match": {
+              "location": "stepDepinations.LandingPage.user_faching_title_of_landing_page()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 15995700,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "User assert \"My Store\" titile with corrent page titale",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"My Store\"",
+                  "offset": 12
+                }
+              ],
+              "location": "stepDepinations.LandingPage.user_assert_titile_with_corrent_page_titale(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 706331100,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "close web application",
+            "match": {
+              "location": "stepDepinations.LandingPage.close_web_application()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@landingPageTest"
+          },
+          {
+            "name": "@test2"
+          }
+        ]
+      }
+    ],
+    "name": "All test on landing page of web application",
+    "description": "",
+    "id": "all-test-on-landing-page-of-web-application",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/LandingPage.feature",
+    "tags": [
+      {
+        "name": "@landingPageTest",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
