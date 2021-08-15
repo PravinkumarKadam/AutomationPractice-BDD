@@ -20,3 +20,8 @@ Feature: All test on landing page of web application
     And User assert "My Store" title with corrent page title
     Then user fetching title of landing page
     And close web application
+
+  @LogoDisplayTest
+  Scenario: User Landing Page Application Logo Display Test
+    Then user check on landing page Logo is Display or not
+    And close web application

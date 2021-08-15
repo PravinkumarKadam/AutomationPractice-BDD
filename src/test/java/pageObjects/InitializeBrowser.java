@@ -17,9 +17,10 @@ public class InitializeBrowser {
 	WebDriver driver;
 	WebDriverWait wait;
 
-	public InitializeBrowser(WebDriver driver)
+	public InitializeBrowser(WebDriver driver,Scenario scn)
 	{
 		this.driver = driver;
+		this.scn = scn;
 	}
 
 	public void ini_driver() 
