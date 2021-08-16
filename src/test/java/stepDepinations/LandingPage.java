@@ -63,8 +63,23 @@ public class LandingPage {
 	}
 
 	@Then("user check on landing page Logo is Display or not")
-	public void user_check_on_landing_page_logo_is_display_or_not() {
-		landingPagePageObject.LogoDisplay();
+	public void user_check_on_landing_page_logo_is_display_or_not()
+	{
+		landingPagePageObject.logoDisplay();
 	}
 
+	@Then("user faching Logo hight and Width from Home page of application")
+	public void user_faching_logo_hight_and_width_from_home_page_of_application()
+	{
+	  landingPagePageObject.logoWidth_Height();
+	}
+	@Then("Assert Logh hight and Width respectively {string} and {string}")
+	public void assert_logh_hight_and_width_respectively_and(String Height, String widh) 
+	{
+       landingPagePageObject.assertingLogoSize(Height, widh);
+	}
+
+	
+	
+	
 }

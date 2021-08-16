@@ -4,18 +4,20 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.cucumber.java.Scenario;
+import pageObjects.LandingPagePageObject;
 
 public class Utilites {
 	Scenario scn;
 	WebDriver driver;
 	WebDriverWait wait;
+	
 
 	public Utilites(WebDriver driver,Scenario scn) {
 
 		this.driver = driver;
 		this.scn = scn;
 	}
-
+	
 	public void enterUrl(String url) {
 		driver.get(url);
 		//  scn.log("Driver initialized successfully.");
@@ -42,6 +44,8 @@ public class Utilites {
 		driver.quit();
 		//	scn.log("Browser colsed.");
 	}
+	
+	
 
 
 }

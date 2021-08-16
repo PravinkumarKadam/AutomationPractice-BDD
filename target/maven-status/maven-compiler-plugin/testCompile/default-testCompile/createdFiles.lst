@@ -1,7 +1,0 @@
-base\BrowserFactory.class
-stepDepinations\LandingPage.class
-testrunner\TestRunner.class
-pageObjects\InitializeBrowser.class
-pageObjects\LandingPagePageObject.class
-base\Utilites.class
-base\Initilization.class
