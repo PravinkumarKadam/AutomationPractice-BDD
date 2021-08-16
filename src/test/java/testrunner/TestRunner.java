@@ -6,12 +6,14 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "G:\\Workplace\\com.automationPractice-BDD\\src\\test\\resources\\features",
+		features = "src/test/resources/features",
 		glue = "stepDepinations",
-		tags = "@ValidatelogoSize",
+		tags = "",
 		plugin = {"pretty",
-				"html:target/html/Autocucumber-BDD.html",
-				"json:target/json/AutoPrac-BDD.json"
+				  "html:target/html/Autocucumber-BDD.html",
+				  "json:target/json/AutoPrac-BDD.json",
+				  "junit:target/cucumberXML.xml",
+				  "rerun:target/failedrerun.txt"
 		},
 		dryRun = false,
 		monochrome = true,
