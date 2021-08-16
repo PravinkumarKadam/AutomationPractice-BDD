@@ -3,7 +3,7 @@ package base;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-public class Initilization {
+public class Initialization {
 	
 	Properties prop;
 	

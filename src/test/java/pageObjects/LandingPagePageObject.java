@@ -1,8 +1,7 @@
 package pageObjects;
 
-import java.util.Iterator;
-import java.util.List;
 
+import java.util.List;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -47,26 +46,26 @@ public class LandingPagePageObject {
 
 	public void logoWidth_Height() {
 		WebElement logoSize = driver.findElement(logoImageLocator);
-		System.out.println("Logo Widh is : " + logoSize.getSize().getWidth());
+		System.out.println("Logo Width is : " + logoSize.getSize().getWidth());
 		System.out.println("Logo Height is : " + logoSize.getSize().getHeight());
 
-		// scn.log("Logo Widh is : " + logoSize.getSize().getHeight());
+		// scn.log("Logo Width is : " + logoSize.getSize().getHeight());
 		// scn.log("Logo Height is : " + logoSize.getSize().getHeight());
 	}
 
-	public void assertingLogoSize(String Height, String widh) 
+	public void assertingLogoSize(String Height, String width) 
 	{
 		int Height_1 = Integer.parseInt(Height);
-		int widh_1 = Integer.parseInt(widh);
+		int width_1 = Integer.parseInt(width);
 
 		WebElement logoSize = driver.findElement(logoImageLocator);
-		Assert.assertEquals("user faild to assert widh of logo ", widh_1, +logoSize.getSize().getWidth());
-		Assert.assertEquals("User faild to assert logo Height", Height_1, logoSize.getSize().getHeight());
+		Assert.assertEquals("user failed to assert width of logo ", width_1, +logoSize.getSize().getWidth());
+		Assert.assertEquals("User failed to assert logo Height", Height_1, logoSize.getSize().getHeight());
 
-		System.out.println("User sucessfully assert log widh and height are respectively "
+		System.out.println("User successfully assert log width and height are respectively "
 				+ logoSize.getSize().getWidth() + " and " + logoSize.getSize().getHeight());
 
-		// scn.log("User sucessfully assert log widh and height are respectively "+
+		// scn.log("User successfully assert log width and height are respectively "+
 		// logoSize.getSize().getWidth()+" and "+ logoSize.getSize().getHeight());
 	}
 
