@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = "G:\\Workplace\\com.automationPractice-BDD\\src\\test\\resources\\features",
 		glue = "stepDepinations",
-		tags = "",
+		tags = "@ValidatelogoSize",
 		plugin = {"pretty",
 				"html:target/html/Autocucumber-BDD.html",
 				"json:target/json/AutoPrac-BDD.json"
