@@ -4,7 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import base.Utilites;
+
+import base.Utilities;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,10 +20,11 @@ public class LandingPage {
 	Scenario scn;
 
 	WebDriver driver = new ChromeDriver();
-	Utilites utilites = new Utilites(driver, scn);
+	Utilities utilities = new Utilities(driver, scn);
 	InitializeBrowser initializeBrowser = new InitializeBrowser(driver, scn);
 	LandingPagePageObject landingPagePageObject = new LandingPagePageObject(driver, scn);
 
+	
 	@Given("user open Web application")
 	public void user_open_web_application() {
 		initializeBrowser.ini_driver();
@@ -30,18 +32,18 @@ public class LandingPage {
 
 	@When("user enter {string} url")
 	public void user_enter_url(String url) {
-		utilites.enterUrl(url);
+		utilities.enterUrl(url);
 	}
 
 	@Then("user assert {string} url to current home page url")
 	public void user_assert_url_to_current_home_page_url(String url) {
-		utilites.assertUrl(url);
+		utilities.assertUrl(url);
 
 	}
 
 	@Then("close web application")
 	public void close_web_application() {
-		utilites.closeDriver();
+		utilities.closeDriver();
 
 	}
 
@@ -51,15 +53,15 @@ public class LandingPage {
 
 	}
 
-	@When("User assert {string} title with corrent page title")
+	@When("User assert {string} title with current page title")
 	public void user_assert_title_with_corrent_page_title(String title) {
-		utilites.assertPageTitle(title);
+		utilities.assertPageTitle(title);
 
 	}
 
 	@Then("user fetching title of landing page")
 	public void user_fetching_title_of_landing_page() {
-		utilites.getCurentPageTittle();
+		utilities.getCurentPageTittle();
 	}
 
 	@Then("user check on landing page Logo is Display or not")
@@ -68,15 +70,16 @@ public class LandingPage {
 		landingPagePageObject.logoDisplay();
 	}
 
-	@Then("user faching Logo hight and Width from Home page of application")
+	@Then("user fetching Logo height and Width from Home page of application")
 	public void user_faching_logo_hight_and_width_from_home_page_of_application()
 	{
 	  landingPagePageObject.logoWidth_Height();
 	}
-	@Then("Assert Logh hight and Width respectively {string} and {string}")
-	public void assert_logh_hight_and_width_respectively_and(String Height, String widh) 
+	
+	@Then("Assert Logo height and Width respectively {string} and {string}")
+	public void assert_logh_hight_and_width_respectively_and(String Height, String width) 
 	{
-       landingPagePageObject.assertingLogoSize(Height, widh);
+       landingPagePageObject.assertingLogoSize(Height, width);
 	}
 
 	
