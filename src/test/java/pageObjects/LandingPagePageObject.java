@@ -8,20 +8,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import base.TestContext;
 import io.cucumber.java.Scenario;
 
 public class LandingPagePageObject {
 
-	Scenario scn;
+	//Scenario scn;
 	WebDriver driver;
 	WebDriverWait wait;
 
 	private static final By productCatageroyLocator = By.xpath("//div[@id='block_top_menu']/ul/li/a");
 	private static final By logoImageLocator = By.xpath("//img[@class='logo img-responsive']");
 
-	public LandingPagePageObject(WebDriver driver, Scenario scn) {
+	public LandingPagePageObject(WebDriver driver) {
 		this.driver = driver;
-		this.scn = scn;
 	}
 
 	public void productlist() {

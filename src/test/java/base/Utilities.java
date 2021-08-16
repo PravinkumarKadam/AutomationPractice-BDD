@@ -7,17 +7,17 @@ import io.cucumber.java.Scenario;
 
 
 public class Utilities {
-	Scenario scn;
-	WebDriver driver;
-	WebDriverWait wait;
-	
+	public Scenario scn;
+	public WebDriver driver;
+	public WebDriverWait wait;
+
 
 	public Utilities(WebDriver driver,Scenario scn) {
 
 		this.driver = driver;
-		this.scn = scn;
+		//this.scn = scn;
 	}
-	
+
 	public void enterUrl(String url) {
 		driver.get(url);
 		//  scn.log("Driver initialized successfully.");
@@ -29,8 +29,8 @@ public class Utilities {
 		//	scn.log("asserting url " + url+ " with current page url.");
 	}
 
-	public void getCurentPageTittle() {
-		driver.getTitle();
+	public String getCurentPageTittle() {
+		return driver.getTitle();
 		//	scn.log("user fetching current page title :" + driver.getTitle());
 	}
 
@@ -44,8 +44,8 @@ public class Utilities {
 		driver.quit();
 		//	scn.log("Browser closed.");
 	}
-	
-	
+
+
 
 
 }
