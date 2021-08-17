@@ -8,12 +8,12 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = "src/test/resources/features",
 		glue = "stepDepinations",
-		tags = "",
+		tags = "@UserResisterTest",
 		plugin = {"pretty",
-				  "html:target/html/Autocucumber-BDD.html",
-				  "json:target/json/AutoPrac-BDD.json",
-				  "junit:target/cucumberXML.xml",
-				  "rerun:target/failedrerun.txt"
+				"html:target/html/Autocucumber-BDD.html",
+				"json:target/json/AutoPrac-BDD.json",
+				"junit:target/cucumberXML.xml",
+				"rerun:target/failedrerun.txt"
 		},
 		dryRun = false,
 		monochrome = true,

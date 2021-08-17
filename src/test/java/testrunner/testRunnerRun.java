@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features = "@target/failedrerun.txt",
-		glue = "stepDepinations",  
+		glue = "stepDepinations", 
 		plugin = {"pretty",								
 				"html:targetRerun/html/htmlreport.html", 	
 				"json:targetRerun/json/file.json",			
