@@ -1,6 +1,7 @@
 package stepDepinations;
 
 import base.TestContext;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Then;
 
@@ -13,6 +14,9 @@ public class SignInPageStepDef {
 		this.testContext = testContext;
 		this.scn = testContext.scn;
 	}
+	
+	@Before
+	public void setup(Scenario scn){this.scn = scn;}
 
 	@Then("click on SignIn button")
 	public void click_on_sign_in_button() {

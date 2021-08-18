@@ -12,42 +12,32 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BrowserFactory {
 
-	 private static WebDriver driver=null;
+	private static WebDriver driver = null;
 
 	Properties prop;
 
-
-		public Properties intialization_pro() 
-		{
-			prop = new Properties();
-			try {
-		    FileInputStream file = new FileInputStream("/src/test/resources/config.properties");
+	public Properties intialization_pro() {
+		prop = new Properties();
+		try {
+			FileInputStream file = new FileInputStream("/src/test/resources/config.properties");
 			prop.load(file);
-			}
-			catch(Exception e)
-			{
-				System.out.println("FileNotFoundException : file path is not correct \n"+"IOException : Exception occured while file loading.");
-				e.printStackTrace();
-			}
-	
-			return prop;
+		} catch (Exception e) {
+			System.out.println("FileNotFoundException : file path is not correct \n"
+					+ "IOException : Exception occured while file loading.");
+			e.printStackTrace();
 		}
-		
 
+		return prop;
+	}
 
-	public WebDriver opeingBrowser()
-	{
+	public WebDriver opeingBrowser() {
 		String BrowserName = prop.getProperty("browser");
 
-		if(BrowserName.equalsIgnoreCase("chrome")) 
-		{
-			driver= new ChromeDriver();
-		}
-		else if (BrowserName.equalsIgnoreCase("firefox"))
-		{
+		if (BrowserName.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+		} else if (BrowserName.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
-		}		
-		else {
+		} else {
 			System.out.println("Browser is not available to run so provide another option.");
 		}
 
