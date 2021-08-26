@@ -4,6 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Properties;
 
+/**
+ * @author Pravinkumar D Kadam
+ * @Company: VisionIT
+ * @Date:    19-August-2021
+ * @Description: Test com.automationPractice-BDD FW development
+ */
+
 public class BaseClass {
 
 	private static  String browser;
@@ -34,7 +41,13 @@ public class BaseClass {
 		return prop;	
 	}
 
-	
+	/**
+	 * This is static method.
+	 * 
+	 * @return browser
+	 * 
+	 *  @author Pravinkumar D Kadam
+	 */
 	public static String getBrowser() 
 	{
 		return browser;

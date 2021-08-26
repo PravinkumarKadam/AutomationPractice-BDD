@@ -1,6 +1,12 @@
 
 package pageObjects;
 
+/* Author:  Pravinkumar D Kadam
+ * Company: VisionIT
+ * Date:    19-August-2021
+ * Description: Test com.automationPractice-BDD FW development
+ */
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +15,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import base.TestContext;
 import io.cucumber.java.Scenario;
+
+/**
+ * @Author:  Pravinkumar D Kadam
+ * @Company: VisionIT
+ * @Date:    19-August-2021
+ * @Description: Test com.automationPractice-BDD FW development
+ */
 
 public class SignInPageObjects {
 
@@ -24,17 +37,33 @@ public class SignInPageObjects {
 
 	private static final String VerifycreateAccountTitle_veriable = "CREATE AN ACCOUNT";
 
+	/**
+	 * This is parameterized constructor of SignInPageObjects class
+	 * @param driver
+	 * @param wait
+	 * @param scn
+	 * @author  Pravinkumar D Kadam
+	 */
 	public SignInPageObjects(WebDriver driver, WebDriverWait wait, Scenario scn) {
 		this.driver = driver;
 		this.wait = wait;
 		this.scn = scn;
 	}
 
+	/**
+	 * This is parameterized constructor of SignInPageObjects class
+	 * @param testContext
+	 * @author  Pravinkumar D Kadam
+	 */
 	public SignInPageObjects(TestContext testContext) {
 		this.testContext = testContext;
 		this.scn = testContext.scn;
 	}
 
+	/**
+	 * This method click on Sign Button on Sign In Page
+	 * @author  Pravinkumar D Kadam
+	 */
 	public void ClickSignButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SignButton_Locator));
 		WebElement buttonClick = driver.findElement(SignButton_Locator);
@@ -42,12 +71,27 @@ public class SignInPageObjects {
 		scn.log("Click on SignIn Button.");
 	}
 
+	/**
+	 * This method help to create different new Mail ID.
+	 * 
+	 * @param mail
+	 * @param mailTag
+	 * @return Mail ID
+	 *@author  Pravinkumar D Kadam
+	 */
 	public String NewCreatedMailId(String mail, String mailTag) {
 		String CurrentMail = mail + System.currentTimeMillis() + mailTag;
 		scn.log("New Created Mail ID is :> " + CurrentMail);
 		return CurrentMail;
 	}
 
+	/**
+	 * Method use mail , mailTag in parameter and create new mail Id with the help of NewCreatedMailId(); method
+	 * and fill in mail Box on Sign In page.
+	 * @param mail
+	 * @param mailTag
+	 * @author Pravinkumar D Kadam
+	 */
 	public void enterMailID(String mail, String mailTag) {
 		String CurrentMail = NewCreatedMailId(mail, mailTag);
 		WebElement mailBox = driver.findElement(SignPageMailBox_Locator);
@@ -56,6 +100,10 @@ public class SignInPageObjects {
 		System.out.println("Mail use to crate new account :> " + CurrentMail);
 	}
 
+	/**
+	 * This method click create an account button
+	 * @author   Pravinkumar D Kadam
+	 */
 	public void ClickCreatAccountButton() {
 		WebElement clickOn = driver.findElement(CreatAccountButton_Locator);
 		clickOn.click();

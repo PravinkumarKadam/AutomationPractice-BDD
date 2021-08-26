@@ -1,5 +1,11 @@
 package testrunner;
 
+/* Author:  Pravinkumar D Kadam
+ * Company: VisionIT
+ * Date:    19-August-2021
+ * Description: Test com.automationPractice-BDD FW development
+ */
+
 import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -8,7 +14,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = "src/test/resources/features",
 		glue = "stepDepinations",
-		tags = "",
+		tags = "@CreateAnAccountPageTest",
 		plugin = {"pretty",
 				"html:target/html/Autocucumber-BDD.html",
 				"json:target/json/AutoPrac-BDD.json",

@@ -9,12 +9,17 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
-/* @Author Pravinkumar Kadam
- * Date: 19-August-2021
- * Description: Test Automation FW development
+/**
+ * @author Pravinkumar D Kadam
+ * @Company: VisionIT
+ * @Date:    19-August-2021
+ * @Description: Test com.automationPractice-BDD FW development
+ * 
+ * @see
  * Following script is the automation testing simulation
  * for the Application - "http://automationpractice.com/index.php?"
- * Where following test cases included
+ * 
+ * @ Where following test cases included
  *   1. URL Redirection Test
  *   2. Landing Page Title Test
  *   3. Product category validation Test
@@ -23,12 +28,13 @@ import io.cucumber.java.Scenario;
  *   6. Validate Application Logo Width on Landing page
  *   7. SignIn page Title Validation Test
  *   8. Resister user with New Email Id on SignIn Page
- *  Note - To Execute the Test case no 8
+ *  @Note - To Execute the Test case no 8
  *         Change variables values for new account creation 
  *         i.   newUserEmailId
  *         ii.  userFirestName
  *         iii. userLastName 
  */
+
 
 public class LandingPageStepDef {
 

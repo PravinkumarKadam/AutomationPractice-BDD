@@ -1,5 +1,13 @@
 package pageObjects;
 
+
+/**
+ * Author:  Pravinkumar D Kadam
+ * Company: VisionIT
+ * Date:    19-August-2021
+ * Description: Test com.automationPractice-BDD FW development
+ */
+
 import java.util.List;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -8,14 +16,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import base.TestContext;
 import io.cucumber.java.Scenario;
 
-public class CreateAnAccountPageObject {
+/**
+ * @Author:  Pravinkumar D Kadam
+ * @Company: VisionIT
+ * @Date:    19-August-2021
+ * @Description: Test com.automationPractice-BDD FW development
+ */
+
+public class CreateAnAccountPageObject extends TestContext {
 
 	WebDriver driver;
 	WebDriverWait wait;
 	Scenario scn;
+	TestContext testContext;
 
 	// #YOUR PERSONAL INFORMATION
 	private static final By SelectGender_Mr_Locator = By.xpath("//div[@id='uniform-id_gender1']");
@@ -48,12 +64,28 @@ public class CreateAnAccountPageObject {
 	// variables
 	private static final String MyAccount_Veriable = "MY ACCOUNT";
 
+	/**
+	 * This is parameterized constructor of class
+	 * Use to initialize all WebDriver/Scenario/WebDriverWait/etc
+	 *
+	 * @param driver
+	 * @param wait
+	 * @param scn
+	 * 
+	 * @author Pravinkumar D Kadam
+	 */
 	public CreateAnAccountPageObject(WebDriver driver, WebDriverWait wait, Scenario scn) {
 		this.driver = driver;
 		this.scn = scn;
-		this.wait = wait;
+		this.wait = wait;	
 	}
-
+	
+	/**
+	 * This method use to select Month from DropDown option
+	 * @param day
+	 *
+	 *@author PravinKumar D Kadam
+	 */
 	public void selectDay(String day) {
 		WebElement day1 = driver.findElement(Day_Locator);
 		Select select = new Select(day1);
@@ -61,6 +93,12 @@ public class CreateAnAccountPageObject {
 		scn.log("Day of Birth :> " + day);
 	}
 
+	/**
+	 * This method use to select Month from DropDown option
+	 * @param Month
+	 * 
+	 * @author PravinKumar D Kadam
+	 */
 	public void selectMonth(String Month) {
 		WebElement Month1 = driver.findElement(Month_Locator);
 		Select select = new Select(Month1);
@@ -68,6 +106,13 @@ public class CreateAnAccountPageObject {
 		scn.log("Month of Birth :> " + Month);
 	}
 
+	/**
+	 * This method use to select Year from DropDown option
+	 * 
+	 * @param year
+	 * 
+	 * @author PravinKumar D Kadam
+	 */
 	public void selectYear(String year) {
 		WebElement year1 = driver.findElement(Year_Locator);
 		Select select = new Select(year1);
@@ -75,6 +120,13 @@ public class CreateAnAccountPageObject {
 		scn.log("Year of Birth :> " + year);
 	}
 
+	/**
+	 * This method use to select State from DropDown option
+	 * 
+	 * @param State
+	 *
+	 *@author PravinKumar D Kadam
+	 */
 	public void selectState(String State) {
 		WebElement State1 = driver.findElement(State_Locator);
 		Select select = new Select(State1);
@@ -82,6 +134,13 @@ public class CreateAnAccountPageObject {
 		scn.log("Selected state is :> " + State);
 	}
 
+	/**
+	 * This method use to select Country from DropDown option
+	 * 
+	 * @param Country
+	 * 
+	 * @author PravinKumar D Kadam
+	 */
 	public void selectCountry(String Country) {
 		WebElement Country1 = driver.findElement(Country_Locator);
 		Select select = new Select(Country1);
@@ -89,12 +148,25 @@ public class CreateAnAccountPageObject {
 		scn.log("Selected Country is :> " + Country);
 	}
 
+	/**
+	 * This method use to select Gender option.
+	 * 
+	 * @author PravinKumar D Kadam
+	 */
 	public void selectGender() {
 		WebElement male = driver.findElement(SelectGender_Mr_Locator);
 		male.click();
 		scn.log("Selected Gender is :> " + "Mr.");
 	}
+	
 
+	/**
+	 * This method fill all the information from Data Table.
+	 * 
+	 * @param table
+	 * 
+	 * @author PravinKumar D Kadam
+	 */
 	public void enterValidData(io.cucumber.datatable.DataTable table) {
 		List<String> rows = table.column(1);
 
@@ -234,6 +306,11 @@ public class CreateAnAccountPageObject {
 
 	}
 
+	/**
+	 *  This Method use to verify Account is created or not.
+	 * 
+	 * @author Pravinkumar D Kadam
+	 */
 	public void assertFormFill() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MyAccount_Locator));
 		String account = driver.findElement(MyAccount_Locator).getText();
@@ -241,6 +318,11 @@ public class CreateAnAccountPageObject {
 		scn.log("Account is created and asserted successfully :> " + account);
 	}
 
+	/**
+	 * This method use to click register Button on Create an Account page.
+	 * 
+	 *  @author Pravinkumar D Kadam
+	 */
 	public void clickRegisterButton() {
 		WebElement RegisterButton = driver.findElement(RegisterButon_Locator);
 		RegisterButton.click();
