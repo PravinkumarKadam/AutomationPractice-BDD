@@ -1,13 +1,5 @@
 package pageObjects;
 
-
-/**
- * Author:  Pravinkumar D Kadam
- * Company: VisionIT
- * Date:    19-August-2021
- * Description: Test com.automationPractice-BDD FW development
- */
-
 import java.util.List;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -16,136 +8,126 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import base.JavaScriptUtil;
 import base.TestContext;
+import base.WebDriverUtilities;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
 /**
- * @Author:  Pravinkumar D Kadam
- * @Company: VisionIT
- * @Date:    19-August-2021
+ * There is a single repository for the operations offered by the [
+ * CreateAnAccountPageObject ] class and the ease of use to minimize the efforts
+ * for the script writers
+ * 
+ * @Author: Pravinkumar D Kadam
+ * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
+public class CreateAnAccountPageObject {
 
-public class CreateAnAccountPageObject extends TestContext {
-
-	WebDriver driver;
-	WebDriverWait wait;
-	Scenario scn;
-	TestContext testContext;
+	public WebDriver driver;
+	public WebDriverWait wait;
+	public Scenario scn;
+	WebDriverUtilities webDriverUtilities;
+	JavaScriptUtil javaScriptUtil;
 
 	// #YOUR PERSONAL INFORMATION
-	private static final By SelectGender_Mr_Locator = By.xpath("//div[@id='uniform-id_gender1']");
-	private static final By FirstName_Locator = By.xpath("//input[@id='customer_firstname']");
-	private static final By LastName_Locator = By.xpath("//input[@id='customer_lastname']");
-	private static final By Password_Locator = By.xpath("//input[@id='passwd']");
+	private final By SelectGender_Mr_Locator = By.xpath("//div[@id='uniform-id_gender1']");
+	private final By FirstName_Locator = By.xpath("//input[@id='customer_firstname']");
+	private final By LastName_Locator = By.xpath("//input[@id='customer_lastname']");
+	private final By Password_Locator = By.xpath("//input[@id='passwd']");
 	// # Date of Birth
-	private static final By Day_Locator = By.xpath("//select[@id='days']");////////
-	private static final By Month_Locator = By.xpath("//select[@id='months']");//////
-	private static final By Year_Locator = By.xpath("//select[@id='years']");///////
-	private static final By SignUpForUurNewsletter_Locator = By.xpath("//label[text()='Sign up for our newsletter!']");
-	private static final By ReceiveSpecialOffers_Locator = By
+	private final By Day_Locator = By.xpath("//select[@id='days']");////////
+	private final By Month_Locator = By.xpath("//select[@id='months']");//////
+	private final By Year_Locator = By.xpath("//select[@id='years']");///////
+	private final By SignUpForUurNewsletter_Locator = By.xpath("//label[text()='Sign up for our newsletter!']");
+	private final By ReceiveSpecialOffers_Locator = By
 			.xpath("//label[text()='Receive special offers from our partners!']");
 	// #YOUR ADDRESS
-	private static final By FirstNameAddres_Locator = By.xpath("//input[@id='firstname']");
-	private static final By LastNameAddress_Locator = By.xpath("//input[@id='lastname']");
-	private static final By Company_Locator = By.xpath("//input[@id='company']");
-	private static final By Address_Locator = By.xpath("//input[@id='address1']");
-	private static final By City_Locator = By.xpath("//input[@id='city']");
-	private static final By State_Locator = By.xpath("//select[@id='id_state']");////
-	private static final By ZipCode_Locator = By.xpath("//input[@id='postcode']");
-	private static final By Country_Locator = By.xpath("//select[@id='id_country']");///
-	private static final By AdditionalInformation_Locator = By.xpath("//textarea[@id='other']");
-	private static final By HomePhone_Locator = By.xpath("//input[@id='phone']");
-	private static final By MobilePhone_Locator = By.xpath("//input[@id='phone_mobile']");
-	private static final By AssignAnAddressAlias_Locator = By.xpath("//input[@id='alias']");
-	private static final By MyAccount_Locator = By.xpath("//h1[text()='My account']");
-	private static final By RegisterButon_Locator = By.xpath("//button[@id='submitAccount']");
+	private final By FirstNameAddres_Locator = By.xpath("//input[@id='firstname']");
+	private final By LastNameAddress_Locator = By.xpath("//input[@id='lastname']");
+	private final By Company_Locator = By.xpath("//input[@id='company']");
+	private final By Address_Locator = By.xpath("//input[@id='address1']");
+	private final By City_Locator = By.xpath("//input[@id='city']");
+	private final By State_Locator = By.xpath("//select[@id='id_state']");////
+	private final By ZipCode_Locator = By.xpath("//input[@id='postcode']");
+	private final By Country_Locator = By.xpath("//select[@id='id_country']");///
+	private final By AdditionalInformation_Locator = By.xpath("//textarea[@id='other']");
+	private final By HomePhone_Locator = By.xpath("//input[@id='phone']");
+	private final By MobilePhone_Locator = By.xpath("//input[@id='phone_mobile']");
+	private final By AssignAnAddressAlias_Locator = By.xpath("//input[@id='alias']");
+	private final By MyAccount_Locator = By.xpath("//h1[text()='My account']");
+	private final By RegisterButon_Locator = By.xpath("//button[@id='submitAccount']");
 
 	// variables
-	private static final String MyAccount_Veriable = "MY ACCOUNT";
+	private final String MyAccount_Variable = "MY ACCOUNT";
 
 	/**
-	 * This is parameterized constructor of class
-	 * Use to initialize all WebDriver/Scenario/WebDriverWait/etc
+	 * This is parameterized constructor of class Use to initialize all
+	 * WebDriver/Scenario/WebDriverWait/etc
 	 *
 	 * @param driver
 	 * @param wait
 	 * @param scn
-	 * 
 	 * @author Pravinkumar D Kadam
 	 */
 	public CreateAnAccountPageObject(WebDriver driver, WebDriverWait wait, Scenario scn) {
 		this.driver = driver;
 		this.scn = scn;
-		this.wait = wait;	
-	}
-	
-	/**
-	 * This method use to select Month from DropDown option
-	 * @param day
-	 *
-	 *@author PravinKumar D Kadam
-	 */
-	public void selectDay(String day) {
-		WebElement day1 = driver.findElement(Day_Locator);
-		Select select = new Select(day1);
-		select.selectByValue(day);
-		scn.log("Day of Birth :> " + day);
+		this.wait = wait;
+		webDriverUtilities = new WebDriverUtilities(this.driver, this.scn);
+		javaScriptUtil = new JavaScriptUtil(this.driver);
 	}
 
 	/**
 	 * This method use to select Month from DropDown option
-	 * @param Month
 	 * 
+	 * @param day
+	 * @author PravinKumar D Kadam
+	 */
+	public void selectDay(String day) {
+		webDriverUtilities.selectValueFromDropdwon(day, Day_Locator);
+	}
+
+	/**
+	 * This method use to select Month from DropDown option
+	 * 
+	 * @param Month
 	 * @author PravinKumar D Kadam
 	 */
 	public void selectMonth(String Month) {
-		WebElement Month1 = driver.findElement(Month_Locator);
-		Select select = new Select(Month1);
-		select.selectByValue(Month);
-		scn.log("Month of Birth :> " + Month);
+		webDriverUtilities.selectValueFromDropdwon(Month, Month_Locator);
 	}
 
 	/**
 	 * This method use to select Year from DropDown option
 	 * 
 	 * @param year
-	 * 
 	 * @author PravinKumar D Kadam
 	 */
 	public void selectYear(String year) {
-		WebElement year1 = driver.findElement(Year_Locator);
-		Select select = new Select(year1);
-		select.selectByValue(year);
-		scn.log("Year of Birth :> " + year);
+		webDriverUtilities.selectValueFromDropdwon(year, Year_Locator);
 	}
 
 	/**
 	 * This method use to select State from DropDown option
 	 * 
 	 * @param State
-	 *
-	 *@author PravinKumar D Kadam
+	 * @author PravinKumar D Kadam
 	 */
 	public void selectState(String State) {
-		WebElement State1 = driver.findElement(State_Locator);
-		Select select = new Select(State1);
-		select.selectByValue(State);
-		scn.log("Selected state is :> " + State);
+		webDriverUtilities.selectValueFromDropdwon(State, State_Locator);
 	}
 
 	/**
 	 * This method use to select Country from DropDown option
 	 * 
 	 * @param Country
-	 * 
 	 * @author PravinKumar D Kadam
 	 */
 	public void selectCountry(String Country) {
-		WebElement Country1 = driver.findElement(Country_Locator);
-		Select select = new Select(Country1);
-		select.selectByValue(Country);
-		scn.log("Selected Country is :> " + Country);
+		webDriverUtilities.selectValueFromDropdwon(Country, Country_Locator);
 	}
 
 	/**
@@ -158,13 +140,11 @@ public class CreateAnAccountPageObject extends TestContext {
 		male.click();
 		scn.log("Selected Gender is :> " + "Mr.");
 	}
-	
 
 	/**
 	 * This method fill all the information from Data Table.
 	 * 
 	 * @param table
-	 * 
 	 * @author PravinKumar D Kadam
 	 */
 	public void enterValidData(io.cucumber.datatable.DataTable table) {
@@ -307,24 +287,26 @@ public class CreateAnAccountPageObject extends TestContext {
 	}
 
 	/**
-	 *  This Method use to verify Account is created or not.
+	 * This Method use to verify Account is created or not.
 	 * 
 	 * @author Pravinkumar D Kadam
 	 */
 	public void assertFormFill() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MyAccount_Locator));
 		String account = driver.findElement(MyAccount_Locator).getText();
-		Assert.assertEquals("Account is not created.", MyAccount_Veriable, account);
+		Assert.assertEquals("Account is not created.", MyAccount_Variable, account);
 		scn.log("Account is created and asserted successfully :> " + account);
 	}
 
 	/**
 	 * This method use to click register Button on Create an Account page.
 	 * 
-	 *  @author Pravinkumar D Kadam
+	 * @author Pravinkumar D Kadam
 	 */
 	public void clickRegisterButton() {
 		WebElement RegisterButton = driver.findElement(RegisterButon_Locator);
+		javaScriptUtil.scrollIntoView(RegisterButton);
+		javaScriptUtil.flash(RegisterButton);
 		RegisterButton.click();
 		scn.log("Click on Register Button.");
 	}

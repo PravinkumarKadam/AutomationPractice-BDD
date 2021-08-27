@@ -15,47 +15,53 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import base.JavaScriptUtil;
 import base.TestContext;
 import io.cucumber.java.Scenario;
 
 /**
+ * There is a single repository for the operations offered by the [
+ * LandingPagePageObject ] class and the ease of use to minimize the efforts for
+ * the script writers
+ * 
  * @Company: VisionIT
- * @Date:    19-August-2021
+ * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
- * @author  Pravinkumar D Kadam
- *
+ * @author Pravinkumar D Kadam
  */
-
 public class LandingPagePageObject {
 
 	TestContext testContext;
 	Scenario scn;
 	WebDriver driver;
 	WebDriverWait wait;
+	JavaScriptUtil javaScriptUtil;
 
 	private static final By productCatageroyLocator = By.xpath("//div[@id='block_top_menu']/ul/li/a");
 	private static final By logoImageLocator = By.xpath("//img[@class='logo img-responsive']");
 
-
 	/**
-	 * It is parameterized constructor of LandingPagePageObject class.
-	 * It use to initialize all driver, Scenario, WebDriverWait, TestContext, etc......
+	 * It is parameterized constructor of LandingPagePageObject class. It use to
+	 * initialize all driver, Scenario, WebDriverWait, TestContext, etc......
+	 * 
 	 * @param driver
 	 * @param wait
 	 * @param scn
 	 * 
-	 * @author  Pravinkumar D Kadam
+	 * @author Pravinkumar D Kadam
 	 */
 	public LandingPagePageObject(WebDriver driver, WebDriverWait wait, Scenario scn) {
 		this.driver = driver;
 		this.wait = wait;
 		this.scn = scn;
+		javaScriptUtil = new JavaScriptUtil(this.driver);
 	}
 
 	/**
-	 * Method contain one for each loop which help to fetching product category list.
+	 * Method contain one for each loop which help to fetching product category
+	 * list.
 	 * 
-	 * @author  Pravinkumar D Kadam
+	 * @author Pravinkumar D Kadam
 	 */
 	public void productlist() {
 
@@ -71,15 +77,18 @@ public class LandingPagePageObject {
 		}
 
 	}
+
 	/**
-	 * Method check and assert logo on Landing page.  
-	 * function are use like Explicitly wait(WebDriverWait), By Locator , org.junit.Assert
+	 * Method check and assert logo on Landing page. function are use like
+	 * Explicitly wait(WebDriverWait), By Locator , org.junit.Assert
 	 * 
-	 * @author   Pravinkumar D Kadam
+	 * @author Pravinkumar D Kadam
 	 */
 	public void logoDisplay() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(logoImageLocator));
-		boolean logoDisplayOrNOt = driver.findElement(logoImageLocator).isDisplayed();
+		WebElement logo = driver.findElement(logoImageLocator);
+		javaScriptUtil.flash(logo);
+		boolean logoDisplayOrNOt = logo.isDisplayed();
 		Assert.assertTrue("Logo is not displayed.", logoDisplayOrNOt);
 		scn.log("Logo is Display :> " + logoDisplayOrNOt);
 	}
@@ -98,6 +107,7 @@ public class LandingPagePageObject {
 		scn.log("Logo Width is :> " + logoSize.getSize().getHeight());
 
 	}
+
 	/**
 	 * Method assert Logo (Which is present on landing page) size.
 	 * 

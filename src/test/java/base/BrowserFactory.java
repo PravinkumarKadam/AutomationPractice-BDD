@@ -13,19 +13,18 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
 
 /**
+ * This class help to initialize of Properties and WebDriver.
+ * 
  * @Author: Pravinkumar D Kadam
- * @Company: VisionIT
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
-
 public class BrowserFactory {
 
 	private static WebDriver driver = null;
 
 	Properties prop;
 	public String BROWSER_NAME;
-
 
 	/**
 	 * This method use to initialization of Properties and Creates property list
@@ -48,7 +47,6 @@ public class BrowserFactory {
 		return prop;
 	}
 
-
 	/**
 	 * This method is used to initialize the WebDriver on the basis of given browser
 	 * name Searches for the property with the specified key in this property list.
@@ -56,13 +54,11 @@ public class BrowserFactory {
 	 * browser , etc...
 	 * 
 	 * @return Driver
-	 * 
-	 *
 	 * @author Pravinkumar D kadam
 	 */
 	public WebDriver openingBrowser() {
 		String BrowserName = prop.getProperty("browser");
-		int implicitWait = Integer.parseInt( prop.getProperty("ImplicitWait"));
+		int implicitWait = Integer.parseInt(prop.getProperty("ImplicitWait"));
 
 		if (BrowserName.equalsIgnoreCase("chrome")) {
 			if (prop.getProperty("headless").equalsIgnoreCase("yes")) {
@@ -98,8 +94,7 @@ public class BrowserFactory {
 				opt.addArguments("--headless");
 
 				driver = new OperaDriver(opt);
-			}
-			else {
+			} else {
 				driver = new OperaDriver();
 			}
 		}
@@ -107,8 +102,7 @@ public class BrowserFactory {
 		else if (BrowserName.equalsIgnoreCase("edge")) {
 
 			driver = new EdgeDriver();
-		}
-		else {
+		} else {
 			System.out.println("Browser is not available to run so provide another option.");
 		}
 
@@ -121,7 +115,6 @@ public class BrowserFactory {
 
 		return driver;
 	}
-
 
 	/**
 	 * This method is used to return the browser name

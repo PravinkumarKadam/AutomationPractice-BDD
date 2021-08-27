@@ -1,6 +1,7 @@
 package base;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -8,28 +9,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import io.cucumber.java.Scenario;
 
 /**
- * This class having the wrapper methods
- * on top of Selenium WebDriver methods
- * to interact with elements on WebPage
- * with the ease of use to minimize the efforts
- * for the script writers
- * @Author:  Pravinkumar D Kadam
- * @Company: VisionIT
- * @Date:    19-August-2021
+ * This class having the wrapper methods on top of Selenium WebDriver methods to
+ * interact with elements on WebPage with the ease of use to minimize the
+ * efforts for the script writers
+ * 
+ * @Author: Pravinkumar D Kadam
  * @Description: Test com.automationPractice-BDD FW development
  */
-
 public class Utilities {
-	
+
 	public Scenario scn;
 	public WebDriver driver;
 	public WebDriverWait wait;
 	public TestContext testContext;
 
 	/**
-	 * This is constructor of Utilities class.
-	 * This constructor initialize 
+	 * This is constructor of Utilities class. This constructor initialize
 	 * WebDriver, WebDriverWait, WebDriverWait, Scenario
+	 * 
 	 * @param driver
 	 * @param wait
 	 * @param scn
@@ -54,6 +51,7 @@ public class Utilities {
 
 	/**
 	 * This method use to enter url.
+	 * 
 	 * @param url
 	 * @author Pravinkumar D Kadam
 	 */
@@ -75,8 +73,9 @@ public class Utilities {
 	}
 
 	/**
-	 * Method fetch current page title.
-	 * It also  print current page title into the report.
+	 * Method fetch current page title. It also print current page title into the
+	 * report.
+	 * 
 	 * @return Current page title
 	 * @author PravinKumar D Kadam
 	 */
@@ -86,24 +85,26 @@ public class Utilities {
 	}
 
 	/**
-	 * Method help to fetching current page title and assert it.
-	 * It also  print current page title into the report.
+	 * Method help to fetching current page title and assert it. It also print
+	 * current page title into the report.
+	 * 
 	 * @param title
-	 *@author Pravinkumar D Kadam
+	 * @author Pravinkumar D Kadam
 	 */
 	public void assertPageTitle(String title) {
 		Assert.assertEquals("user unable to asserting page title ", title, driver.getTitle());
 		System.out.println("User Assert Page Title successfully Test case passed.");
-		scn.log("User assert Current page tile '"+ driver.getTitle() +"' successfully.");
+		scn.log("User assert Current page tile '" + driver.getTitle() + "' successfully.");
 	}
-	
+
 	/**
 	 * Method help to closed all tab in driver.
+	 * 
 	 * @author Pravinkumar D Kadam
 	 */
 	public void closeDriver() {
 		driver.quit();
 		scn.log("Browser closed.");
 	}
-	
+
 }

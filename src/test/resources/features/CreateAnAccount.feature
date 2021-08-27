@@ -22,6 +22,7 @@ Feature: User want to crate new account
       | Last name                                     | Samsung                                                |
       | Password                                      | ThomasSamsung@123                                      |
       # Date of Birth
+      
       | Day                                           |                                                     10 |
       | Month                                         |                                                      6 |
       | Year                                          |                                                   1992 |
