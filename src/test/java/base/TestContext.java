@@ -6,10 +6,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import Utilities.JavaScriptUtil;
+import Utilities.Utilities;
+import Utilities.WaitUtilities;
+import Utilities.WebDriverUtilities;
 import io.cucumber.java.Scenario;
-import pageObjects.CreateAnAccountPageObject;
-import pageObjects.LandingPagePageObject;
-import pageObjects.SignInPageObjects;
+import pageObjects.AllProductPriceAndTotal_PageObject;
+import pageObjects.CreateAnAccount_PageObject;
+import pageObjects.LandingPage_PageObject;
+import pageObjects.SignInPage_PageObjects;
+import pageObjects.ValidateSearchBox_PageObject;
 
 /**
  * This class help to initialize Objects of all classes.
@@ -22,16 +29,21 @@ public class TestContext {
 
 	public WebDriver driver;
 	public Scenario scn;
-	public TestContext testContext;
-	public Utilities utilities;
-	public LandingPagePageObject landingPagePageObject;
-	public BrowserFactory browserFactory;
-	public SignInPageObjects signInPageObjects;
 	public WebDriverWait wait;
-	public CreateAnAccountPageObject createAnAccountPageObject;
+	public TestContext testContext;
+
+	public BrowserFactory browserFactory;
+
+	public Utilities utilities;
 	public WebDriverUtilities webDriverUtilities;
 	public WaitUtilities waitUtilities;
 	public JavaScriptUtil javaScriptUtil;
+
+	public SignInPage_PageObjects signInPageObjects;
+	public CreateAnAccount_PageObject createAnAccountPageObject;
+	public LandingPage_PageObject landingPagePageObject;
+	public ValidateSearchBox_PageObject validateSearchBoxPageObject;
+	public AllProductPriceAndTotal_PageObject allProductPriceAndTotal_PageObject;
 
 	/**
 	 * This method use open browser. It also using property file's key to open
@@ -56,7 +68,7 @@ public class TestContext {
 	public void initializationOfObjects(Scenario scn) {
 		this.scn = scn;
 		ChromeOptions option = new ChromeOptions();
-		option.addArguments("--Incognito");	
+		option.addArguments("--Incognito");
 		driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
@@ -65,12 +77,15 @@ public class TestContext {
 
 		testContext = new TestContext();
 		utilities = new Utilities(driver, wait, scn);
-		landingPagePageObject = new LandingPagePageObject(driver, wait, scn);
-		signInPageObjects = new SignInPageObjects(driver, wait, scn);
-		createAnAccountPageObject = new CreateAnAccountPageObject(driver, wait, scn);
 		waitUtilities = new WaitUtilities(driver, scn);
 		webDriverUtilities = new WebDriverUtilities(driver, scn);
 		javaScriptUtil = new JavaScriptUtil(driver);
+
+		createAnAccountPageObject = new CreateAnAccount_PageObject(driver, wait, scn);
+		landingPagePageObject = new LandingPage_PageObject(driver, wait, scn);
+		signInPageObjects = new SignInPage_PageObjects(driver, wait, scn);
+		validateSearchBoxPageObject = new ValidateSearchBox_PageObject(driver, wait, scn);
+		allProductPriceAndTotal_PageObject = new AllProductPriceAndTotal_PageObject(driver, wait, scn);
 	}
 
 	/**

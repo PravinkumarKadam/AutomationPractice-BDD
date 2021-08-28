@@ -32,12 +32,12 @@ import io.cucumber.java.en.Then;
  *         iii. userLastName 
  */
 
-public class SignInPageStepDef {
+public class SignInPage_StepDef {
 
 	public Scenario scn;
 	TestContext testContext;
 
-	public SignInPageStepDef(TestContext testContext) {
+	public SignInPage_StepDef(TestContext testContext) {
 		this.testContext = testContext;
 		this.scn = testContext.scn;
 	}

@@ -36,14 +36,14 @@ import io.cucumber.java.Scenario;
  */
 
 
-public class LandingPageStepDef {
+public class LandingPage_StepDef {
 
-	private static final Logger logger = LogManager.getLogger(LandingPageStepDef.class);
+	private static final Logger logger = LogManager.getLogger(LandingPage_StepDef.class);
 
 	public Scenario scn;
 	TestContext testContext;
 
-	public LandingPageStepDef(TestContext testContext) {
+	public LandingPage_StepDef(TestContext testContext) {
 		this.testContext = testContext;
 		this.scn = testContext.scn;
 	}

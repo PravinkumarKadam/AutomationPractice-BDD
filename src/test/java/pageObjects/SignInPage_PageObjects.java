@@ -14,21 +14,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import base.JavaScriptUtil;
+import Utilities.JavaScriptUtil;
 import base.TestContext;
 import io.cucumber.java.Scenario;
 
 /**
- * There is a single repository for the operations offered by the [
- * SignInPageObjects ] class and the ease of use to minimize the efforts for the
- * script writers
+ * There is a object repository for the operations offered by 'SignInPage_PageObjects' class.
+ * This class help to achieve encapsulation.
  * 
  * @Author: Pravinkumar D Kadam
  * @Company: VisionIT
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
-public class SignInPageObjects {
+public class SignInPage_PageObjects {
 
 	public Scenario scn;
 	WebDriver driver;
@@ -37,12 +36,12 @@ public class SignInPageObjects {
 	JavaScriptUtil javaScriptUtil;
 
 	// Locator
-	private static final By SignButton_Locator = By.xpath("//a[@class='login']");
-	private static final By SignPageMailBox_Locator = By.xpath("//input[@id='email_create']");
-	private static final By CreatAccountButton_Locator = By.xpath("//button[@id='SubmitCreate']/span");
-	private static final By VerifycreateAccountTitle_Locator = By.xpath("//h1[contains(text(),'Create an account')]");
+	private final By SignButton_Locator = By.xpath("//a[@class='login']");
+	private final By SignPageMailBox_Locator = By.xpath("//input[@id='email_create']");
+	private final By CreatAccountButton_Locator = By.xpath("//button[@id='SubmitCreate']/span");
+	private final By VerifycreateAccountTitle_Locator = By.xpath("//h1[contains(text(),'Create an account')]");
 	// Variable
-	private static final String VerifycreateAccountTitle_variable = "CREATE AN ACCOUNT";
+	private final String VerifycreateAccountTitle_variable = "CREATE AN ACCOUNT";
 
 	/**
 	 * This is parameterized constructor of SignInPageObjects class
@@ -52,7 +51,7 @@ public class SignInPageObjects {
 	 * @param scn
 	 * @author Pravinkumar D Kadam
 	 */
-	public SignInPageObjects(WebDriver driver, WebDriverWait wait, Scenario scn) {
+	public SignInPage_PageObjects(WebDriver driver, WebDriverWait wait, Scenario scn) {
 		this.driver = driver;
 		this.wait = wait;
 		this.scn = scn;
@@ -65,7 +64,7 @@ public class SignInPageObjects {
 	 * @param testContext
 	 * @author Pravinkumar D Kadam
 	 */
-	public SignInPageObjects(TestContext testContext) {
+	public SignInPage_PageObjects(TestContext testContext) {
 		this.testContext = testContext;
 		this.scn = testContext.scn;
 	}

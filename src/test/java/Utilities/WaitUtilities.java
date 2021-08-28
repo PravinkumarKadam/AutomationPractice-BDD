@@ -1,4 +1,4 @@
-package base;
+package Utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -6,7 +6,6 @@ import io.cucumber.java.Scenario;
 
 /**
  * This class holding up methods to pause the script for certain amount of time
- * 
  * @IMP_Note : Avoid using this utility unless its very much needed
  * @author Pravinkumar D Kadam
  */

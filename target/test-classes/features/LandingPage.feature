@@ -1,9 +1,8 @@
+
 # Author:  Pravinkumar D Kadam
 # Company: VisionIT
 # Date:    19-August-2021
 # Description: Test com.automationPractice-BDD FW development
- 
-
 
 @LandingPageTest
 Feature: All test on landing page of web application
@@ -33,11 +32,8 @@ Feature: All test on landing page of web application
     Then user check on landing page Logo is Display or not
     And close web application
 
-@ValidatelogoSize
+  @ValidatelogoSize
   Scenario: Validate Application logo Height on Landing Page
     Then user fetching Logo height and Width from Home page of application
-    And  Assert Logo height and Width respectively "99" and "350"
+    And Assert Logo height and Width respectively "99" and "350"
     And close web application
-    
-    
-    

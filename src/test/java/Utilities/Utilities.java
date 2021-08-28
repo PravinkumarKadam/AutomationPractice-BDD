@@ -1,11 +1,14 @@
-package base;
+package Utilities;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import base.TestContext;
 import io.cucumber.java.Scenario;
 
 /**
@@ -21,7 +24,7 @@ public class Utilities {
 	public Scenario scn;
 	public WebDriver driver;
 	public WebDriverWait wait;
-	public TestContext testContext;
+	JavaScriptUtil javaScriptUtil;
 
 	/**
 	 * This is constructor of Utilities class. This constructor initialize
@@ -36,17 +39,7 @@ public class Utilities {
 		this.driver = driver;
 		this.wait = wait;
 		this.scn = scn;
-	}
-
-	/**
-	 * This is constructor of Utilities class.
-	 * 
-	 * @param testContext
-	 * @author Pravinkumar D Kadam
-	 */
-	public Utilities(TestContext testContext) {
-		this.testContext = testContext;
-		this.scn = testContext.scn;
+		javaScriptUtil = new JavaScriptUtil(this.driver);
 	}
 
 	/**
@@ -105,6 +98,29 @@ public class Utilities {
 	public void closeDriver() {
 		driver.quit();
 		scn.log("Browser closed.");
+	}
+
+	/**
+	 * Method used to enter editable content in the text and password fields during
+	 * test execution.
+	 * 
+	 * @param text
+	 * @param Locator
+	 * @author Pravinkumar D Kadam
+	 */
+	public void enterText(String text, By Locator) {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(Locator));
+		WebElement element = driver.findElement(Locator);
+		javaScriptUtil.flash(element);
+		element.sendKeys(text);
+	}
+
+	public void ClickElement(By locator) {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		WebElement element = driver.findElement(locator);
+		javaScriptUtil.flash(element);
+		element.click();
+		scn.log("Click on element.");
 	}
 
 }

@@ -1,8 +1,8 @@
+
 # Author:  Pravinkumar D Kadam
 # Company: VisionIT
 # Date:    19-August-2021
 # Description: Test com.automationPractice-BDD FW development
- 
 
 @CreateAnAccountPageTest
 Feature: User want to crate new account
@@ -16,13 +16,13 @@ Feature: User want to crate new account
     And click on Create and Account button
     And salect gender
     And user enter valid data on the page
+    
       | Attributes                                    | Value                                                  |
       #YOUR PERSONAL INFORMATION
       | First name                                    | Thomas                                                 |
       | Last name                                     | Samsung                                                |
       | Password                                      | ThomasSamsung@123                                      |
       # Date of Birth
-      
       | Day                                           |                                                     10 |
       | Month                                         |                                                      6 |
       | Year                                          |                                                   1992 |
@@ -40,7 +40,14 @@ Feature: User want to crate new account
       | Additional information                        | Apple Park is the corporate headquarters of Apple Inc. |
       | Home phone                                    |                                                6927753 |
       | Mobile phone                                  |                                             8006920000 |
-      | Assign an address alias for future reference. | Apple Park, US.                         |
+      | Assign an address alias for future reference. | Apple Park, US.                                        |
+      
     And click on Register button
     And assert registration form
     And close web application
+
+    
+    
+    
+    
+    

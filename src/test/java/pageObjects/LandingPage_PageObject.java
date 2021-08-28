@@ -15,21 +15,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import base.JavaScriptUtil;
+import Utilities.JavaScriptUtil;
 import base.TestContext;
 import io.cucumber.java.Scenario;
 
 /**
- * There is a single repository for the operations offered by the [
- * LandingPagePageObject ] class and the ease of use to minimize the efforts for
- * the script writers
+ * There is a object repository for the operations offered by 'LandingPage_PageObject' class.
+ * This class help to achieve encapsulation.
  * 
  * @Company: VisionIT
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
-public class LandingPagePageObject {
+public class LandingPage_PageObject {
 
 	TestContext testContext;
 	Scenario scn;
@@ -50,7 +49,7 @@ public class LandingPagePageObject {
 	 * 
 	 * @author Pravinkumar D Kadam
 	 */
-	public LandingPagePageObject(WebDriver driver, WebDriverWait wait, Scenario scn) {
+	public LandingPage_PageObject(WebDriver driver, WebDriverWait wait, Scenario scn) {
 		this.driver = driver;
 		this.wait = wait;
 		this.scn = scn;

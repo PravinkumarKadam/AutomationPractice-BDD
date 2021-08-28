@@ -9,22 +9,21 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import base.JavaScriptUtil;
+import Utilities.JavaScriptUtil;
+import Utilities.WebDriverUtilities;
 import base.TestContext;
-import base.WebDriverUtilities;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
 /**
- * There is a single repository for the operations offered by the [
- * CreateAnAccountPageObject ] class and the ease of use to minimize the efforts
- * for the script writers
+ * There is a object repository for the operations offered by 'CreateAnAccount_PageObject' class.
+ * This class help to achieve encapsulation.
  * 
  * @Author: Pravinkumar D Kadam
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
-public class CreateAnAccountPageObject {
+public class CreateAnAccount_PageObject {
 
 	public WebDriver driver;
 	public WebDriverWait wait;
@@ -72,7 +71,7 @@ public class CreateAnAccountPageObject {
 	 * @param scn
 	 * @author Pravinkumar D Kadam
 	 */
-	public CreateAnAccountPageObject(WebDriver driver, WebDriverWait wait, Scenario scn) {
+	public CreateAnAccount_PageObject(WebDriver driver, WebDriverWait wait, Scenario scn) {
 		this.driver = driver;
 		this.scn = scn;
 		this.wait = wait;
