@@ -1,13 +1,12 @@
 package base;
 
-import java.io.File;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import Utilities.JavaScriptUtil;
+import Utilities.MouseAction;
 import Utilities.Utilities;
 import Utilities.WaitUtilities;
 import Utilities.WebDriverUtilities;
@@ -15,6 +14,7 @@ import io.cucumber.java.Scenario;
 import pageObjects.AllProductPriceAndTotal_PageObject;
 import pageObjects.CreateAnAccount_PageObject;
 import pageObjects.LandingPage_PageObject;
+import pageObjects.SendAFriendFeature_PageObject;
 import pageObjects.SignInPage_PageObjects;
 import pageObjects.ValidateSearchBox_PageObject;
 
@@ -30,7 +30,6 @@ public class TestContext {
 	public WebDriver driver;
 	public Scenario scn;
 	public WebDriverWait wait;
-	public TestContext testContext;
 
 	public BrowserFactory browserFactory;
 
@@ -38,12 +37,14 @@ public class TestContext {
 	public WebDriverUtilities webDriverUtilities;
 	public WaitUtilities waitUtilities;
 	public JavaScriptUtil javaScriptUtil;
+	public MouseAction mouseAction;
 
 	public SignInPage_PageObjects signInPageObjects;
 	public CreateAnAccount_PageObject createAnAccountPageObject;
 	public LandingPage_PageObject landingPagePageObject;
 	public ValidateSearchBox_PageObject validateSearchBoxPageObject;
 	public AllProductPriceAndTotal_PageObject allProductPriceAndTotal_PageObject;
+	public SendAFriendFeature_PageObject sendAFriendFeature_PageObject;
 
 	/**
 	 * This method use open browser. It also using property file's key to open
@@ -69,32 +70,25 @@ public class TestContext {
 		this.scn = scn;
 		ChromeOptions option = new ChromeOptions();
 		option.addArguments("--Incognito");
+		//option.addArguments("--headless");
 		driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		wait = new WebDriverWait(driver, 40);
 
-		testContext = new TestContext();
 		utilities = new Utilities(driver, wait, scn);
 		waitUtilities = new WaitUtilities(driver, scn);
 		webDriverUtilities = new WebDriverUtilities(driver, scn);
 		javaScriptUtil = new JavaScriptUtil(driver);
+		mouseAction = new MouseAction(driver, wait, scn);
 
 		createAnAccountPageObject = new CreateAnAccount_PageObject(driver, wait, scn);
 		landingPagePageObject = new LandingPage_PageObject(driver, wait, scn);
 		signInPageObjects = new SignInPage_PageObjects(driver, wait, scn);
 		validateSearchBoxPageObject = new ValidateSearchBox_PageObject(driver, wait, scn);
 		allProductPriceAndTotal_PageObject = new AllProductPriceAndTotal_PageObject(driver, wait, scn);
-	}
-
-	/**
-	 * This method help to close all current open tab
-	 * 
-	 * @author Pravinkumar D Kadam
-	 */
-	public void quitDriver() {
-		driver.quit();
+		sendAFriendFeature_PageObject = new SendAFriendFeature_PageObject(driver, wait, scn);
 	}
 
 }

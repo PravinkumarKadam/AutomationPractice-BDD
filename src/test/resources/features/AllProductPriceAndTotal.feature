@@ -3,9 +3,13 @@
 # Company: VisionIT
 # Date:    19-August-2021
 # Description: Test com.automationPractice-BDD FW development
+
 @AllProductPriceAndTotal
 Feature: Fetch the all product price and get its total
 
+  Test No :
+        10. Fetch the all product price and get its total
+   
   @tag1
   Scenario: Fetch the all product price and get its total
     Given user open Web application

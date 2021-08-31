@@ -6,6 +6,13 @@
 
 @LandingPageTest
 Feature: All test on landing page of web application
+  
+  Test No :
+         1. URL Redirection Test
+         2. Landing Page Title Test
+         3. Product Category Validation Test
+         4. Landing Page Application Logo Display Test
+       5/6. Validate Application Logo Height and Width On Landing page
 
   Background: 
     Given user open Web application
@@ -16,15 +23,15 @@ Feature: All test on landing page of web application
     Then user assert "http://automationpractice.com/index.php?" url to current home page url
     And close web application
 
-  @ProductVlidationTest
-  Scenario: user Product category validation Test
-    Then user fetching product category list
-    And close web application
-
   @LandingPageTitleTest
   Scenario: user doing Landing Page Title Test
     And User assert "My Store" title with current page title
     Then user fetching title of landing page
+    And close web application
+
+  @ProductVlidationTest
+  Scenario: user Product category validation Test
+    Then user fetching product category list
     And close web application
 
   @LogoDisplayTest

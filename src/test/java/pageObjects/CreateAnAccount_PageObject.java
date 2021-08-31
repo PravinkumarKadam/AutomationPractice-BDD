@@ -5,19 +5,15 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import Utilities.JavaScriptUtil;
+import Utilities.Utilities;
 import Utilities.WebDriverUtilities;
-import base.TestContext;
-import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
 /**
- * There is a object repository for the operations offered by 'CreateAnAccount_PageObject' class.
- * This class help to achieve encapsulation.
+ * There is a object repository for the operations offered by
+ * 'CreateAnAccount_PageObject' class. This class help to achieve encapsulation.
  * 
  * @Author: Pravinkumar D Kadam
  * @Date: 19-August-2021
@@ -30,6 +26,7 @@ public class CreateAnAccount_PageObject {
 	public Scenario scn;
 	WebDriverUtilities webDriverUtilities;
 	JavaScriptUtil javaScriptUtil;
+	Utilities utilities;
 
 	// #YOUR PERSONAL INFORMATION
 	private final By SelectGender_Mr_Locator = By.xpath("//div[@id='uniform-id_gender1']");
@@ -75,6 +72,7 @@ public class CreateAnAccount_PageObject {
 		this.driver = driver;
 		this.scn = scn;
 		this.wait = wait;
+		utilities = new Utilities(this.driver, this.wait, this.scn);
 		webDriverUtilities = new WebDriverUtilities(this.driver, this.scn);
 		javaScriptUtil = new JavaScriptUtil(this.driver);
 	}
@@ -135,8 +133,7 @@ public class CreateAnAccount_PageObject {
 	 * @author PravinKumar D Kadam
 	 */
 	public void selectGender() {
-		WebElement male = driver.findElement(SelectGender_Mr_Locator);
-		male.click();
+		utilities.ClickElement(SelectGender_Mr_Locator);
 		scn.log("Selected Gender is :> " + "Mr.");
 	}
 
@@ -152,22 +149,19 @@ public class CreateAnAccount_PageObject {
 		for (int i = 0; i < rows.size(); i++) {
 
 			if (i == 1) {
-				WebElement name = driver.findElement(FirstName_Locator);
-				name.sendKeys(rows.get(1).toString());
+				utilities.enterText(rows.get(1).toString(),FirstName_Locator);
 				scn.log("First name :> " + rows.get(1).toString());
 				continue;
 			}
 
 			if (i == 2) {
-				WebElement lastName = driver.findElement(LastName_Locator);
-				lastName.sendKeys(rows.get(2).toString());
+				utilities.enterText(rows.get(2).toString(),LastName_Locator);
 				scn.log("Last name :> " + rows.get(2).toString());
 				continue;
 			}
 
 			if (i == 3) {
-				WebElement password = driver.findElement(Password_Locator);
-				password.sendKeys(rows.get(3).toString());
+				utilities.enterText(rows.get(3).toString(),Password_Locator);
 				scn.log("Password :> " + rows.get(3).toString());
 				continue;
 			}
@@ -188,50 +182,43 @@ public class CreateAnAccount_PageObject {
 			}
 
 			if (i == 7) {
-				WebElement SignUpForUurNewsletter = driver.findElement(SignUpForUurNewsletter_Locator);
-				SignUpForUurNewsletter.click();
+				utilities.ClickElement(SignUpForUurNewsletter_Locator);
 				scn.log("Sign up for our newsletter! :> " + rows.get(7).toString());
 				continue;
 			}
 
 			if (i == 8) {
-				WebElement ReceiveSpecialOffers = driver.findElement(ReceiveSpecialOffers_Locator);
-				ReceiveSpecialOffers.click();
+				utilities.ClickElement(ReceiveSpecialOffers_Locator);
 				scn.log("Receive special offers from our partners! :> " + rows.get(8).toString());
 				continue;
 			}
 
 			if (i == 9) {
-				WebElement FirstNameAddres = driver.findElement(FirstNameAddres_Locator);
-				FirstNameAddres.sendKeys(rows.get(9).toString());
+				utilities.enterText(rows.get(9).toString(),FirstNameAddres_Locator);
 				scn.log("First name (YOUR ADDRESS)  :> " + rows.get(9).toString());
 				continue;
 			}
 
 			if (i == 10) {
-				WebElement LastNameAddress_ = driver.findElement(LastNameAddress_Locator);
-				LastNameAddress_.sendKeys(rows.get(10).toString());
+				utilities.enterText(rows.get(10).toString(),LastNameAddress_Locator);
 				scn.log("Last name (YOUR ADDRESS)  :> " + rows.get(10).toString());
 				continue;
 			}
 
 			if (i == 11) {
-				WebElement Company = driver.findElement(Company_Locator);
-				Company.sendKeys(rows.get(11).toString());
+				utilities.enterText(rows.get(11).toString(),Company_Locator);
 				scn.log("Company (YOUR ADDRESS)  :> " + rows.get(11).toString());
 				continue;
 			}
 
 			if (i == 12) {
-				WebElement Address = driver.findElement(Address_Locator);
-				Address.sendKeys(rows.get(12).toString());
+				utilities.enterText(rows.get(12).toString(),Address_Locator);
 				scn.log("Address (YOUR ADDRESS)  :> " + rows.get(12).toString());
 				continue;
 			}
 
 			if (i == 13) {
-				WebElement City = driver.findElement(City_Locator);
-				City.sendKeys(rows.get(13).toString());
+				utilities.enterText(rows.get(13).toString(),City_Locator);
 				scn.log("City (YOUR ADDRESS)  :> " + rows.get(13).toString());
 				continue;
 			}
@@ -242,8 +229,7 @@ public class CreateAnAccount_PageObject {
 			}
 
 			if (i == 15) {
-				WebElement ZipCode = driver.findElement(ZipCode_Locator);
-				ZipCode.sendKeys(rows.get(15).toString());
+				utilities.enterText(rows.get(15).toString(),ZipCode_Locator);
 				scn.log("Zip/Postal Code (YOUR ADDRESS)  :> " + rows.get(15).toString());
 				continue;
 			}
@@ -256,29 +242,25 @@ public class CreateAnAccount_PageObject {
 			}
 
 			if (i == 17) {
-				WebElement AdditionalInformation = driver.findElement(AdditionalInformation_Locator);
-				AdditionalInformation.sendKeys(rows.get(17).toString());
+				utilities.enterText(rows.get(17).toString(),AdditionalInformation_Locator);
 				scn.log("Additional information (YOUR ADDRESS)  :> " + rows.get(17).toString());
 				continue;
 			}
 
 			if (i == 18) {
-				WebElement HomePhone = driver.findElement(HomePhone_Locator);
-				HomePhone.sendKeys(rows.get(18).toString());
+				utilities.enterText(rows.get(18).toString(),HomePhone_Locator);
 				scn.log("Home phone (YOUR ADDRESS)  :> " + rows.get(18).toString());
 				continue;
 			}
 
 			if (i == 19) {
-				WebElement MobilePhone = driver.findElement(MobilePhone_Locator);
-				MobilePhone.sendKeys(rows.get(19).toString());
+				utilities.enterText(rows.get(19).toString(), MobilePhone_Locator);
 				scn.log("Mobile phone (YOUR ADDRESS)  :> " + rows.get(19).toString());
 				continue;
 			}
 
 			if (i == 20) {
-				WebElement AssignAnAddressAlias = driver.findElement(AssignAnAddressAlias_Locator);
-				AssignAnAddressAlias.sendKeys(rows.get(20).toString());
+				utilities.enterText(rows.get(20).toString(),AssignAnAddressAlias_Locator);
 				scn.log("Assign an address alias for future reference. (YOUR ADDRESS)  :> " + rows.get(20).toString());
 			}
 		}
@@ -291,7 +273,7 @@ public class CreateAnAccount_PageObject {
 	 * @author Pravinkumar D Kadam
 	 */
 	public void assertFormFill() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MyAccount_Locator));
+		utilities.waitForElementClickable(MyAccount_Locator);
 		String account = driver.findElement(MyAccount_Locator).getText();
 		Assert.assertEquals("Account is not created.", MyAccount_Variable, account);
 		scn.log("Account is created and asserted successfully :> " + account);
@@ -303,10 +285,8 @@ public class CreateAnAccount_PageObject {
 	 * @author Pravinkumar D Kadam
 	 */
 	public void clickRegisterButton() {
-		WebElement RegisterButton = driver.findElement(RegisterButon_Locator);
-		javaScriptUtil.scrollIntoView(RegisterButton);
-		javaScriptUtil.flash(RegisterButton);
-		RegisterButton.click();
+		javaScriptUtil.scrollIntoView_ByLocator(HomePhone_Locator);
+		utilities.ClickElement(RegisterButon_Locator);
 		scn.log("Click on Register Button.");
 	}
 }

@@ -111,16 +111,29 @@ public class Utilities {
 	public void enterText(String text, By Locator) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Locator));
 		WebElement element = driver.findElement(Locator);
-		javaScriptUtil.flash(element);
+		javaScriptUtil.drawBorder(element);
 		element.sendKeys(text);
 	}
 
+	/**
+	 * Method help to Click the element. 
+	 * @param locator
+	 * @author Pravinkumar D Kadam
+	 */
 	public void ClickElement(By locator) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		WebElement element = driver.findElement(locator);
 		javaScriptUtil.flash(element);
 		element.click();
 		scn.log("Click on element.");
+	}
+
+	/**
+	 * This method wait Explicitly for 40 sec until element is available for click.
+	 * @param locator
+	 */
+	public void waitForElementClickable(By locator) {
+		wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
 
 }

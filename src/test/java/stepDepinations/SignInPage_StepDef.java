@@ -16,20 +16,6 @@ import io.cucumber.java.en.Then;
  * Following script is the automation testing simulation
  * for the Application - "http://automationpractice.com/index.php?"
  * 
- * @ Where following test cases included
- *   1. URL Redirection Test
- *   2. Landing Page Title Test
- *   3. Product category validation Test
- *   4. Landing Page Application Logo Display Test
- *   5. Validate Application logo Height on Landing Page
- *   6. Validate Application Logo Width on Landing page
- *   7. SignIn page Title Validation Test
- *   8. Resister user with New Email Id on SignIn Page
- *  @Note - To Execute the Test case no 8
- *         Change variables values for new account creation 
- *         i.   newUserEmailId
- *         ii.  userFirestName
- *         iii. userLastName 
  */
 
 public class SignInPage_StepDef {

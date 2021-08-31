@@ -6,7 +6,10 @@
 
 @ValidateSearchBox
 Feature: Validate the search box is enabled to perform sendkeys operation.
-
+  
+  Test No :
+         9. Search by a keyword in the product search box and validate how many products are matching with the name.
+    
   @tag1
   Scenario: Validate the search box is enabled to perform sendkeys operation.
     Given user open Web application

@@ -20,7 +20,7 @@ public class WaitUtilities {
 	}
 
 	/**
-	 * This method will pause the script for 3000 milliseconds
+	 * This method will pause the script for 3000 milliseconds i.e. 3sec
 	 * 
 	 * @author Pravinkumar D Kadam
 	 */
@@ -33,8 +33,7 @@ public class WaitUtilities {
 	}
 
 	/**
-	 * This method will pause the script for 5000 milliseconds
-	 * 
+	 * This method will pause the script for 5000 milliseconds i.e. 5sec
 	 * @author Pravinkumar D Kadam
 	 */
 	public static void Wait_MegaBytes() {
@@ -46,8 +45,7 @@ public class WaitUtilities {
 	}
 
 	/**
-	 * This method will pause the script for 10 seconds
-	 * 
+	 * This method will pause the script for 10000 milliseconds i.e. 10sec 
 	 * @author Pravinkumar D Kadam
 	 */
 	public static void Wait_GigaBytes() {

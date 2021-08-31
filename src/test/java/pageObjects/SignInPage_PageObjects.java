@@ -13,8 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import Utilities.JavaScriptUtil;
+import Utilities.Utilities;
 import base.TestContext;
 import io.cucumber.java.Scenario;
 
@@ -34,12 +34,15 @@ public class SignInPage_PageObjects {
 	TestContext testContext;
 	WebDriverWait wait;
 	JavaScriptUtil javaScriptUtil;
+	Utilities utilities;
 
-	// Locator
+	// Locator	
 	private final By SignButton_Locator = By.xpath("//a[@class='login']");
 	private final By SignPageMailBox_Locator = By.xpath("//input[@id='email_create']");
 	private final By CreatAccountButton_Locator = By.xpath("//button[@id='SubmitCreate']/span");
 	private final By VerifycreateAccountTitle_Locator = By.xpath("//h1[contains(text(),'Create an account')]");
+	private final By Authentication_Locator = By.xpath("//h1[text()='Authentication']");
+	
 	// Variable
 	private final String VerifycreateAccountTitle_variable = "CREATE AN ACCOUNT";
 
@@ -55,6 +58,7 @@ public class SignInPage_PageObjects {
 		this.driver = driver;
 		this.wait = wait;
 		this.scn = scn;
+		utilities= new Utilities(this.driver, this.wait, this.scn);
 		javaScriptUtil = new JavaScriptUtil(this.driver);
 	}
 
@@ -75,7 +79,7 @@ public class SignInPage_PageObjects {
 	 * @author Pravinkumar D Kadam
 	 */
 	public void ClickSignButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SignButton_Locator));
+		utilities.waitForElementClickable(SignButton_Locator);
 		WebElement buttonClick = driver.findElement(SignButton_Locator);
 		javaScriptUtil.flash(buttonClick);
 		buttonClick.click();
@@ -107,7 +111,7 @@ public class SignInPage_PageObjects {
 	public void enterMailID(String mail, String mailTag) {
 		String CurrentMail = NewCreatedMailId(mail, mailTag);
 		WebElement mailBox = driver.findElement(SignPageMailBox_Locator);
-		javaScriptUtil.scrollIntoView(mailBox);
+		javaScriptUtil.scrollIntoView_ByLocator(Authentication_Locator);
 		javaScriptUtil.flash(mailBox);
 		mailBox.sendKeys(CurrentMail);
 		scn.log("Mail use to crate new account :> " + CurrentMail);

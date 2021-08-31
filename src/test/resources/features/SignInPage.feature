@@ -7,6 +7,10 @@
 @SignInPageTest
 Feature: SignIn page Title Validation Test
 
+  Test No :
+         7. SignIn page Title Validation Test
+         8. Register User With New Email Id on SignIn Page
+
   Background: 
     Given user open Web application
     When user enter "http://automationpractice.com/index.php?" url

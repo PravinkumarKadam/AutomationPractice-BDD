@@ -1,5 +1,6 @@
 package Utilities;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,6 +26,19 @@ public class JavaScriptUtil {
 		this.driver = driver;
 	}
 
+	/**
+	 * This method will scroll the WebPage until the element is not visible on the
+	 * page
+	 * 
+	 * @param By locator
+	 * @author Pravinkumar D Kadam
+	 */
+	public void scrollIntoView_ByLocator(By locator) {
+		WebElement element = driver.findElement(locator);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true);", element);
+	}
+	
 	/**
 	 * This method will scroll the WebPage until the element is not visible on the
 	 * page
@@ -80,4 +94,5 @@ public class JavaScriptUtil {
 		js.executeScript("arguments[0].style.border='3px solid red'", element);
 	}
 
+	
 }

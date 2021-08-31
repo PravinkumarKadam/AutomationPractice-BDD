@@ -1,12 +1,10 @@
 package pageObjects;
 
-
 import java.util.List;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import Utilities.Utilities;
 import io.cucumber.java.Scenario;
@@ -25,7 +23,7 @@ public class ValidateSearchBox_PageObject {
 	public WebDriver driver;
 	public WebDriverWait wait;
 	Utilities utilities;
-	
+
 	private final By searchBox_Locator = By.xpath("//input[@id='search_query_top']");
 	private final By searchBoxSuggestion_Locator = By.xpath("//div[@class='ac_results']//li");
 
@@ -62,7 +60,7 @@ public class ValidateSearchBox_PageObject {
 	 * @Author: Pravinkumar D Kadam
 	 */
 	public void fetchResultPrint() {
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(searchBoxSuggestion_Locator));
+		utilities.waitForElementClickable(searchBoxSuggestion_Locator);
 		List<WebElement> elements = driver.findElements(searchBoxSuggestion_Locator);
 		scn.log("All product get displayed in the list with names ::>");
 		for (int i = 0; i < elements.size(); i++) {
