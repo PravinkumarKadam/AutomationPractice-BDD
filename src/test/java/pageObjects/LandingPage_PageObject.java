@@ -8,13 +8,13 @@ package pageObjects;
 
 import java.util.List;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import Utilities.JavaScriptUtil;
 import Utilities.Utilities;
 import io.cucumber.java.Scenario;
+import locatorsAndVeriablies.Locators;
 
 /**
  * There is a object repository for the operations offered by
@@ -25,7 +25,7 @@ import io.cucumber.java.Scenario;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
-public class LandingPage_PageObject {
+public class LandingPage_PageObject extends Locators {
 
 	Scenario scn;
 	WebDriver driver;
@@ -33,8 +33,6 @@ public class LandingPage_PageObject {
 	JavaScriptUtil javaScriptUtil;
 	Utilities utilities;
 
-	private static final By productCatageroyLocator = By.xpath("//div[@id='block_top_menu']/ul/li/a");
-	private static final By logoImageLocator = By.xpath("//img[@class='logo img-responsive']");
 
 	/**
 	 * It is parameterized constructor of LandingPage_PageObject class. It use to

@@ -2,12 +2,12 @@ package pageObjects;
 
 import java.util.List;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import Utilities.Utilities;
 import io.cucumber.java.Scenario;
+import locatorsAndVeriablies.Locators;
 
 /**
  * There is a object repository for the operations offered by 'ValidateSearchBox_PageObject' class.
@@ -17,15 +17,13 @@ import io.cucumber.java.Scenario;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
-public class ValidateSearchBox_PageObject {
+public class ValidateSearchBox_PageObject extends Locators {
 
 	public Scenario scn;
 	public WebDriver driver;
 	public WebDriverWait wait;
 	Utilities utilities;
 
-	private final By searchBox_Locator = By.xpath("//input[@id='search_query_top']");
-	private final By searchBoxSuggestion_Locator = By.xpath("//div[@class='ac_results']//li");
 
 	/**
 	 * This is constructor of ValidateSearchBoxPageObject class. This constructor initialize

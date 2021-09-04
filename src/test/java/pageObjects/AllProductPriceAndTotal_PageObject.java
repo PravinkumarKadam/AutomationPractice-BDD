@@ -2,7 +2,6 @@ package pageObjects;
 
 import java.util.List;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,6 +10,7 @@ import Utilities.Utilities;
 import Utilities.WaitUtilities;
 import base.TestContext;
 import io.cucumber.java.Scenario;
+import locatorsAndVeriablies.Locators;
 
 /**
  * There is a object repository for the operations offered by
@@ -22,7 +22,7 @@ import io.cucumber.java.Scenario;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
-public class AllProductPriceAndTotal_PageObject {
+public class AllProductPriceAndTotal_PageObject extends Locators{
 
 	TestContext testContext;
 	Scenario scn;
@@ -30,10 +30,6 @@ public class AllProductPriceAndTotal_PageObject {
 	WebDriverWait wait;
 	Utilities utilities;
 	JavaScriptUtil javaScriptUtil;
-
-	private final By Dresses_locator = By.xpath("//div[@id='block_top_menu']/ul/li/a[text()='Dresses']");
-	private final By priceOfProduct_locator = By.xpath("//div[@class='right-block']//span[@itemprop='price']");
-	private final By ProductView_Locator = By.xpath("//a[@class=\"product_img_link\"]");
 
 
 	/**

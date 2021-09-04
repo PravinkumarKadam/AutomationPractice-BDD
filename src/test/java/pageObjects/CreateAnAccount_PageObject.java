@@ -2,7 +2,6 @@ package pageObjects;
 
 import java.util.List;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,6 +9,7 @@ import Utilities.JavaScriptUtil;
 import Utilities.Utilities;
 import Utilities.WebDriverUtilities;
 import io.cucumber.java.Scenario;
+import locatorsAndVeriablies.Locators;
 
 /**
  * There is a object repository for the operations offered by
@@ -19,7 +19,7 @@ import io.cucumber.java.Scenario;
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
-public class CreateAnAccount_PageObject {
+public class CreateAnAccount_PageObject extends Locators {
 
 	public WebDriver driver;
 	public WebDriverWait wait;
@@ -28,36 +28,6 @@ public class CreateAnAccount_PageObject {
 	JavaScriptUtil javaScriptUtil;
 	Utilities utilities;
 
-	// #YOUR PERSONAL INFORMATION
-	private final By SelectGender_Mr_Locator = By.xpath("//div[@id='uniform-id_gender1']");
-	private final By FirstName_Locator = By.xpath("//input[@id='customer_firstname']");
-	private final By LastName_Locator = By.xpath("//input[@id='customer_lastname']");
-	private final By Password_Locator = By.xpath("//input[@id='passwd']");
-	// # Date of Birth
-	private final By Day_Locator = By.xpath("//select[@id='days']");////////
-	private final By Month_Locator = By.xpath("//select[@id='months']");//////
-	private final By Year_Locator = By.xpath("//select[@id='years']");///////
-	private final By SignUpForUurNewsletter_Locator = By.xpath("//label[text()='Sign up for our newsletter!']");
-	private final By ReceiveSpecialOffers_Locator = By
-			.xpath("//label[text()='Receive special offers from our partners!']");
-	// #YOUR ADDRESS
-	private final By FirstNameAddres_Locator = By.xpath("//input[@id='firstname']");
-	private final By LastNameAddress_Locator = By.xpath("//input[@id='lastname']");
-	private final By Company_Locator = By.xpath("//input[@id='company']");
-	private final By Address_Locator = By.xpath("//input[@id='address1']");
-	private final By City_Locator = By.xpath("//input[@id='city']");
-	private final By State_Locator = By.xpath("//select[@id='id_state']");////
-	private final By ZipCode_Locator = By.xpath("//input[@id='postcode']");
-	private final By Country_Locator = By.xpath("//select[@id='id_country']");///
-	private final By AdditionalInformation_Locator = By.xpath("//textarea[@id='other']");
-	private final By HomePhone_Locator = By.xpath("//input[@id='phone']");
-	private final By MobilePhone_Locator = By.xpath("//input[@id='phone_mobile']");
-	private final By AssignAnAddressAlias_Locator = By.xpath("//input[@id='alias']");
-	private final By MyAccount_Locator = By.xpath("//h1[text()='My account']");
-	private final By RegisterButon_Locator = By.xpath("//button[@id='submitAccount']");
-
-	// variables
-	private final String MyAccount_Variable = "MY ACCOUNT";
 
 	/**
 	 * This is parameterized constructor of class Use to initialize all

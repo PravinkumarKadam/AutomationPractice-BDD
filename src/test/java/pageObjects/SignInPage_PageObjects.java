@@ -8,7 +8,6 @@ package pageObjects;
  */
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,6 +16,7 @@ import Utilities.JavaScriptUtil;
 import Utilities.Utilities;
 import base.TestContext;
 import io.cucumber.java.Scenario;
+import locatorsAndVeriablies.Locators;
 
 /**
  * There is a object repository for the operations offered by 'SignInPage_PageObjects' class.
@@ -27,7 +27,7 @@ import io.cucumber.java.Scenario;
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
-public class SignInPage_PageObjects {
+public class SignInPage_PageObjects extends Locators {
 
 	public Scenario scn;
 	WebDriver driver;
@@ -35,16 +35,6 @@ public class SignInPage_PageObjects {
 	WebDriverWait wait;
 	JavaScriptUtil javaScriptUtil;
 	Utilities utilities;
-
-	// Locator	
-	private final By SignButton_Locator = By.xpath("//a[@class='login']");
-	private final By SignPageMailBox_Locator = By.xpath("//input[@id='email_create']");
-	private final By CreatAccountButton_Locator = By.xpath("//button[@id='SubmitCreate']/span");
-	private final By VerifycreateAccountTitle_Locator = By.xpath("//h1[contains(text(),'Create an account')]");
-	private final By Authentication_Locator = By.xpath("//h1[text()='Authentication']");
-	
-	// Variable
-	private final String VerifycreateAccountTitle_variable = "CREATE AN ACCOUNT";
 
 	/**
 	 * This is parameterized constructor of SignInPageObjects class

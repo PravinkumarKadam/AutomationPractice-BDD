@@ -1,6 +1,6 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -8,6 +8,7 @@ import Utilities.JavaScriptUtil;
 import Utilities.MouseAction;
 import Utilities.Utilities;
 import io.cucumber.java.Scenario;
+import locatorsAndVeriablies.Locators;
 
 /**
  * There is a object repository for the operations offered by
@@ -19,7 +20,7 @@ import io.cucumber.java.Scenario;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
-public class SendAFriendFeature_PageObject {
+public class SendAFriendFeature_PageObject extends Locators {
 
 	Scenario scn;
 	WebDriver driver;
@@ -28,22 +29,6 @@ public class SendAFriendFeature_PageObject {
 	JavaScriptUtil javaScriptUtil;
 	MouseAction mouseAction;
 
-	private final By SignButton_Locator = By.xpath("//a[@class='login']");
-	private final By EmailBoxForSignIn_Locator = By.xpath("//input[@id='email']");
-	private final By PasswordBoxForSignIn_Locator = By.xpath("//input[@id='passwd']");
-	private final By SignInButton_Locator = By.xpath("//button[@id='SubmitLogin']");
-	private final By Selet_t_shirts_Locator = By
-			.xpath("//ul[@class=\"sf-menu clearfix menu-content sf-js-enabled sf-arrows\"]/li/a[text()='T-shirts']");
-	private final By Failed_Notification_Locator = By.xpath("//div[@class='alert alert-danger']//li");
-	private final By ProductMoreOption_Locator = By.xpath("//div[@class='button-container']/a/span[text()='More']");
-	private final By productPrice_Locator = By.xpath("//div[@class=\"right-block\"]");
-	private final By productImage_Locator = By.xpath("//a[@class=\"product_img_link\"]/img");
-	private final By SendToFriend_Locator = By.xpath("//a[@id='send_friend_button']");
-	private final By FriendNameBox_Locator = By.xpath("//input[@id='friend_name']");
-	private final By FriendMailBox_Locator = By.xpath("//input[@id='friend_email']");
-	private final By SendMassage_Locator = By.xpath("//div[@class='fancybox-inner']/p");
-	private final By Authentication_Locator = By.xpath("//h1[text()='Authentication']");
-	private final By SendButton_Locator = By.xpath("//button[@id='sendEmail']");
 
 	/**
 	 * It is parameterized constructor of SendAFriendFeature_PageObject class. It
