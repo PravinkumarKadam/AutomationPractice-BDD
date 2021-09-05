@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import Utilities.JavaScriptUtil;
 import Utilities.MouseAction;
+import Utilities.ScreenShot;
 import Utilities.Utilities;
 import Utilities.WaitUtilities;
 import Utilities.WebDriverUtilities;
@@ -38,6 +39,7 @@ public class TestContext {
 	public WaitUtilities waitUtilities;
 	public JavaScriptUtil javaScriptUtil;
 	public MouseAction mouseAction;
+	public ScreenShot screenShot;
 
 	public SignInPage_PageObjects signInPageObjects;
 	public CreateAnAccount_PageObject createAnAccountPageObject;
@@ -70,7 +72,7 @@ public class TestContext {
 		this.scn = scn;
 		ChromeOptions option = new ChromeOptions();
 		option.addArguments("--Incognito");
-		//option.addArguments("--headless");
+		// option.addArguments("--headless");
 		driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
@@ -82,6 +84,7 @@ public class TestContext {
 		webDriverUtilities = new WebDriverUtilities(driver, scn);
 		javaScriptUtil = new JavaScriptUtil(driver);
 		mouseAction = new MouseAction(driver, wait, scn);
+		screenShot = new ScreenShot(driver, scn);
 
 		createAnAccountPageObject = new CreateAnAccount_PageObject(driver, wait, scn);
 		landingPagePageObject = new LandingPage_PageObject(driver, wait, scn);

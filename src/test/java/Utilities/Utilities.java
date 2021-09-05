@@ -25,6 +25,7 @@ public class Utilities {
 	public WebDriver driver;
 	public WebDriverWait wait;
 	JavaScriptUtil javaScriptUtil;
+	ScreenShot screenShot;
 
 	/**
 	 * This is constructor of Utilities class. This constructor initialize
@@ -40,6 +41,7 @@ public class Utilities {
 		this.wait = wait;
 		this.scn = scn;
 		javaScriptUtil = new JavaScriptUtil(this.driver);
+		screenShot = new ScreenShot(this.driver, this.scn);
 	}
 
 	/**
@@ -91,13 +93,18 @@ public class Utilities {
 	}
 
 	/**
-	 * Method help to closed all tab in driver.
+	 * Method take screen Shot If any Scenario is failed.
+	 * And finally closed all tab of web browser.
 	 * 
 	 * @author Pravinkumar D Kadam
 	 */
 	public void closeDriver() {
-		driver.quit();
-		scn.log("Browser closed.");
+		try {
+			screenShot.ScreenShot(scn);
+		} finally {
+			driver.quit();
+			scn.log("Browser closed.");
+		}
 	}
 
 	/**
@@ -116,7 +123,8 @@ public class Utilities {
 	}
 
 	/**
-	 * Method help to Click the element. 
+	 * Method help to Click the element.
+	 * 
 	 * @param locator
 	 * @author Pravinkumar D Kadam
 	 */
@@ -130,6 +138,7 @@ public class Utilities {
 
 	/**
 	 * This method wait Explicitly for 40 sec until element is available for click.
+	 * 
 	 * @param locator
 	 */
 	public void waitForElementClickable(By locator) {
