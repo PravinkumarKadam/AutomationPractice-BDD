@@ -1,10 +1,14 @@
 package Utilities;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import base.TestContext;
 import io.cucumber.java.Scenario;
 
 /**
@@ -15,16 +19,18 @@ import io.cucumber.java.Scenario;
  * 
  * @Author: Pravinkumar D Kadam
  */
-public class WebDriverUtilities {
+public class WebDriverUtilities extends TestContext {
 
-	public Scenario scn;
-	public WebDriver driver;
-	JavaScriptUtil javaScriptUtil;
+	private static final Logger logger = LogManager.getLogger(WebDriverUtilities.class);
 
-	public WebDriverUtilities(WebDriver driver, Scenario scn) {
+	Scenario scn;
+	WebDriver driver;
+	WebDriverWait wait;
+
+	public WebDriverUtilities(WebDriver driver, Scenario scn, WebDriverWait wait) {
 		this.driver = driver;
 		this.scn = scn;
-		javaScriptUtil = new JavaScriptUtil(this.driver);
+		this.wait = wait;
 	}
 
 	/**
@@ -36,10 +42,11 @@ public class WebDriverUtilities {
 	 */
 	public void selectValueFromDropdwon(String value, By locator) {
 		WebElement element = driver.findElement(locator);
-        javaScriptUtil.scrollIntoView(element);
+		javaScriptUtil.scrollIntoView(element);
 		Select select = new Select(element);
 		select.selectByValue(value);
 		scn.log("Select Value From Dropdown :> " + value);
+		logger.info("Select Value From Dropdown :> " + value);
 	}
 
 }

@@ -1,13 +1,11 @@
 package stepDepinations;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import base.TestContext;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 
 /**
  * @author Pravinkumar D Kadam
@@ -19,8 +17,6 @@ import io.cucumber.java.Scenario;
  * for the Application - "http://automationpractice.com/index.php?" 
  */
 public class LandingPage_StepDef {
-
-	private static final Logger logger = LogManager.getLogger(LandingPage_StepDef.class);
 
 	public Scenario scn;
 	TestContext testContext;
@@ -35,7 +31,7 @@ public class LandingPage_StepDef {
 	
 	@Given("user open Web application")
 	public void user_open_web_application() {
-		testContext.initializationOfObjects(scn);	
+	  testContext.initializationOfObjects(scn);	
 	}
 
 	@When("user enter {string} url")
@@ -50,7 +46,7 @@ public class LandingPage_StepDef {
 
 	@Then("close web application")
 	public void close_web_application() {
-		testContext.utilities.closeDriver();
+		testContext.utilities.closeDriver(scn);
 	}
 
 	@Then("user fetching product category list")

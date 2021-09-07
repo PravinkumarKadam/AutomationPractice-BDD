@@ -1,16 +1,17 @@
 package pageObjects;
 
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import Utilities.JavaScriptUtil;
-import Utilities.Utilities;
+
 import Utilities.WaitUtilities;
 import base.TestContext;
+import interfaces.Locators;
 import io.cucumber.java.Scenario;
-import locatorsAndVeriablies.Locators;
 
 /**
  * There is a object repository for the operations offered by
@@ -22,33 +23,27 @@ import locatorsAndVeriablies.Locators;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
-public class AllProductPriceAndTotal_PageObject extends Locators{
+public class AllProductPriceAndTotal_PageObject extends TestContext implements Locators {
 
-	TestContext testContext;
+	private static final Logger logger = LogManager.getLogger(AllProductPriceAndTotal_PageObject.class);
+
 	Scenario scn;
 	WebDriver driver;
-	WebDriverWait wait;
-	Utilities utilities;
-	JavaScriptUtil javaScriptUtil;
-
-
+	
 	/**
 	 * It is parameterized constructor of AllProductPriceAndTotal_PageObject class.
 	 * It use to initialize all driver, Scenario, WebDriverWait, TestContext,
 	 * etc......
 	 * 
 	 * @param driver
-	 * @param wait
 	 * @param scn
 	 * 
 	 * @author Pravinkumar D Kadam
 	 */
-	public AllProductPriceAndTotal_PageObject(WebDriver driver, WebDriverWait wait, Scenario scn) {
+	public AllProductPriceAndTotal_PageObject(WebDriver driver,Scenario scn)
+	{
 		this.driver = driver;
-		this.wait = wait;
 		this.scn = scn;
-		javaScriptUtil = new JavaScriptUtil(this.driver);
-		utilities = new Utilities(this.driver, this.wait, this.scn);
 	}
 
 	/**
@@ -59,14 +54,16 @@ public class AllProductPriceAndTotal_PageObject extends Locators{
 	 */
 	public void validateDressesOption(String productName) {
 		WebElement element = driver.findElement(Dresses_locator);
-		javaScriptUtil.drawBorder(element);
+		javaScriptUtil.drawBorder_Bylocator(Dresses_locator);
 		Assert.assertEquals(productName, element.getText());
 		scn.log("Displayed all characters in Upper case, Validatation completed  ::> " + element.getText());
+		logger.info("Displayed all characters in Upper case, Validatation completed  ::> " + element.getText());
 	}
 
 	/**
-	 * This is wrapper method.
-	 * Directly invoked Utilities class method [ ClickElement(); ]
+	 * This is wrapper method. Directly invoked Utilities class method [
+	 * ClickElement(); ]
+	 * 
 	 * @author Pravinkumar D Kadam
 	 */
 	public void ClickOnElement() {
@@ -74,8 +71,9 @@ public class AllProductPriceAndTotal_PageObject extends Locators{
 	}
 
 	/**
-	 * Method help to fetch all the prices of product make Total of all product prices
-	 * and assert it.
+	 * Method help to fetch all the prices of product make Total of all product
+	 * prices and assert it.
+	 * 
 	 * @author Pravinkumar D Kadam
 	 */
 	public void fetch_all_the_prices() {
@@ -84,13 +82,14 @@ public class AllProductPriceAndTotal_PageObject extends Locators{
 		for (int i = 0; i < price.size(); i++) {
 			javaScriptUtil.scrollIntoView_ByLocator(ProductView_Locator);
 			WaitUtilities.Wait_KiloBytes();
-			javaScriptUtil.drawBorder(price.get(i));
+			javaScriptUtil.drawBorder_ByElement(price.get(i));
 			flag = flag + Float.parseFloat(price.get(i).getText().substring(1));
 		}
 		scn.log("The sum of all products ::> " + flag);
 		float Expected_Total = 152.87f;
-	//	Assert.assertNotEquals("Assertion failed", Expected_Total, flag);
+		// Assert.assertNotEquals("Assertion failed", Expected_Total, flag);
 		scn.log("The sum of all products Match with actual Total");
+		logger.info("The sum of all products Match with actual Total");
 	}
 
 }

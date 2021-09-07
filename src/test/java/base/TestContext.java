@@ -9,7 +9,6 @@ import Utilities.JavaScriptUtil;
 import Utilities.MouseAction;
 import Utilities.ScreenShot;
 import Utilities.Utilities;
-import Utilities.WaitUtilities;
 import Utilities.WebDriverUtilities;
 import io.cucumber.java.Scenario;
 import pageObjects.AllProductPriceAndTotal_PageObject;
@@ -28,25 +27,24 @@ import pageObjects.ValidateSearchBox_PageObject;
  */
 public class TestContext {
 
-	public WebDriver driver;
-	public Scenario scn;
-	public WebDriverWait wait;
+	public static WebDriver driver;
+	public static Scenario scn;
+	public static WebDriverWait wait;
 
-	public BrowserFactory browserFactory;
+	public static BrowserFactory browserFactory;
 
-	public Utilities utilities;
-	public WebDriverUtilities webDriverUtilities;
-	public WaitUtilities waitUtilities;
-	public JavaScriptUtil javaScriptUtil;
-	public MouseAction mouseAction;
-	public ScreenShot screenShot;
+	public static Utilities utilities;
+	public static WebDriverUtilities webDriverUtilities;
+	public static JavaScriptUtil javaScriptUtil;
+	public static MouseAction mouseAction;
+	public static ScreenShot screenShot;
 
-	public SignInPage_PageObjects signInPageObjects;
-	public CreateAnAccount_PageObject createAnAccountPageObject;
-	public LandingPage_PageObject landingPagePageObject;
-	public ValidateSearchBox_PageObject validateSearchBoxPageObject;
-	public AllProductPriceAndTotal_PageObject allProductPriceAndTotal_PageObject;
-	public SendAFriendFeature_PageObject sendAFriendFeature_PageObject;
+	public static SignInPage_PageObjects signInPageObjects;
+	public static CreateAnAccount_PageObject createAnAccountPageObject;
+	public static LandingPage_PageObject landingPagePageObject;
+	public static ValidateSearchBox_PageObject validateSearchBoxPageObject;
+	public static AllProductPriceAndTotal_PageObject allProductPriceAndTotal_PageObject;
+	public static SendAFriendFeature_PageObject sendAFriendFeature_PageObject;
 
 	/**
 	 * This method use open browser. It also using property file's key to open
@@ -57,7 +55,7 @@ public class TestContext {
 	 * @throws Exception
 	 * @Return Web Driver , implicitly wait, maximize browser, etc..
 	 */
-	public void initializeWebDriver() throws Exception {
+	public  void initializeWebDriver() throws Exception {
 		driver = browserFactory.openingBrowser();
 	}
 
@@ -72,26 +70,26 @@ public class TestContext {
 		this.scn = scn;
 		ChromeOptions option = new ChromeOptions();
 		option.addArguments("--Incognito");
-		// option.addArguments("--headless");
+//		option.addArguments("--headless");
 		driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		wait = new WebDriverWait(driver, 40);
 
-		utilities = new Utilities(driver, wait, scn);
-		waitUtilities = new WaitUtilities(driver, scn);
-		webDriverUtilities = new WebDriverUtilities(driver, scn);
-		javaScriptUtil = new JavaScriptUtil(driver);
-		mouseAction = new MouseAction(driver, wait, scn);
-		screenShot = new ScreenShot(driver, scn);
+		utilities = new Utilities(driver,scn,wait);
+		webDriverUtilities = new WebDriverUtilities(driver,scn,wait);
+		javaScriptUtil = new JavaScriptUtil(driver,scn,wait);
+		mouseAction = new MouseAction(driver,scn,wait);
+		screenShot = new ScreenShot(driver,scn,wait);
 
-		createAnAccountPageObject = new CreateAnAccount_PageObject(driver, wait, scn);
+		createAnAccountPageObject = new CreateAnAccount_PageObject(driver,scn,wait);
 		landingPagePageObject = new LandingPage_PageObject(driver, wait, scn);
-		signInPageObjects = new SignInPage_PageObjects(driver, wait, scn);
-		validateSearchBoxPageObject = new ValidateSearchBox_PageObject(driver, wait, scn);
-		allProductPriceAndTotal_PageObject = new AllProductPriceAndTotal_PageObject(driver, wait, scn);
-		sendAFriendFeature_PageObject = new SendAFriendFeature_PageObject(driver, wait, scn);
+		signInPageObjects = new SignInPage_PageObjects(driver,scn);
+		validateSearchBoxPageObject = new ValidateSearchBox_PageObject(driver,scn,wait);
+		allProductPriceAndTotal_PageObject = new AllProductPriceAndTotal_PageObject(driver,scn);
+		sendAFriendFeature_PageObject = new SendAFriendFeature_PageObject(driver,scn,wait);
+
 	}
 
 }

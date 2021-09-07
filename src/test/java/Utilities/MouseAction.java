@@ -5,29 +5,36 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import base.TestContext;
 import io.cucumber.java.Scenario;
 
-public class MouseAction {
-
-	public Scenario scn;
-	public WebDriver driver;
-	public WebDriverWait wait;
+/**
+ * This 'MouseAction' class provides various 'MouseAction' method. These
+ * methods used primarily by Web browsers to create a dynamic and interactive
+ * experience for the User.
+ * 
+ * @author Pravinkumar D Kadam
+ */
+public class MouseAction extends TestContext {
+	Scenario scn;
+	WebDriver driver;
+	WebDriverWait wait;
 	Actions actions;
 
 	/**
 	 * This is constructor of Utilities class. This constructor initialize
 	 * WebDriver, WebDriverWait, WebDriverWait, Scenario
-	 * 
-	 * @param driver
-	 * @param wait
-	 * @param scn
+	
 	 * @author Pravinkumar D Kadam
 	 */
-	public MouseAction(WebDriver driver, WebDriverWait wait, Scenario scn) {
+	public MouseAction(WebDriver driver,Scenario scn,WebDriverWait wait)
+	{
 		this.driver = driver;
-		this.wait = wait;
 		this.scn = scn;
-	    actions =new Actions(this.driver);
+		this.wait = wait;
+	
+	    actions =new Actions(driver);
 	}
 
 	/**

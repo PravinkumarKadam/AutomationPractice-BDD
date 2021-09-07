@@ -7,14 +7,16 @@ package pageObjects;
  */
 
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import Utilities.JavaScriptUtil;
-import Utilities.Utilities;
+
+import base.TestContext;
+import interfaces.Locators;
 import io.cucumber.java.Scenario;
-import locatorsAndVeriablies.Locators;
 
 /**
  * There is a object repository for the operations offered by
@@ -25,33 +27,24 @@ import locatorsAndVeriablies.Locators;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
-public class LandingPage_PageObject extends Locators {
+public class LandingPage_PageObject extends TestContext implements Locators {
+
+	private static final Logger logger = LogManager.getLogger(LandingPage_PageObject.class);
 
 	Scenario scn;
 	WebDriver driver;
 	WebDriverWait wait;
-	JavaScriptUtil javaScriptUtil;
-	Utilities utilities;
-
-
+	
 	/**
-	 * It is parameterized constructor of LandingPage_PageObject class. It use to
+	 * It is constructor of LandingPage_PageObject class. It use to
 	 * initialize all driver, Scenario, WebDriverWait, TestContext, etc......
-	 * 
-	 * @param driver
-	 * @param wait
-	 * @param scn
-	 * 
 	 * @author Pravinkumar D Kadam
 	 */
 	public LandingPage_PageObject(WebDriver driver, WebDriverWait wait, Scenario scn) {
 		this.driver = driver;
 		this.wait = wait;
 		this.scn = scn;
-		utilities = new Utilities(driver, wait, scn);
-		javaScriptUtil = new JavaScriptUtil(this.driver);
 	}
-
 	/**
 	 * Method contain one for each loop which help to fetching product category
 	 * list.
@@ -62,13 +55,13 @@ public class LandingPage_PageObject extends Locators {
 
 		List<WebElement> productList = driver.findElements(productCatageroyLocator);
 
-		System.out.println("Product list :: ");
 		scn.log("Product list :: ");
+		logger.info("Product list :: ");
 		for (WebElement e : productList)
 
 		{
-			System.out.println("          " + e.getText());
 			scn.log("             " + e.getText());
+			logger.info("             " + e.getText());
 		}
 
 	}
@@ -86,6 +79,7 @@ public class LandingPage_PageObject extends Locators {
 		boolean logoDisplayOrNOt = logo.isDisplayed();
 		Assert.assertTrue("Logo is not displayed.", logoDisplayOrNOt);
 		scn.log("Logo is Display :> " + logoDisplayOrNOt);
+		logger.info("Logo is Display :> " + logoDisplayOrNOt);
 	}
 
 	/**
@@ -96,10 +90,10 @@ public class LandingPage_PageObject extends Locators {
 	public void logoWidth_Height() {
 		utilities.waitForElementClickable(logoImageLocator);
 		WebElement logoSize = driver.findElement(logoImageLocator);
-		System.out.println("Logo Width is : " + logoSize.getSize().getWidth());
-		System.out.println("Logo Height is : " + logoSize.getSize().getHeight());
 		scn.log("Logo Height is :> " + logoSize.getSize().getHeight());
-		scn.log("Logo Width is :> " + logoSize.getSize().getHeight());
+		logger.info("Logo Height is :> " + logoSize.getSize().getHeight());
+		scn.log("Logo Width is :> " + logoSize.getSize().getWidth());
+		logger.info("Logo Width is :> " + logoSize.getSize().getWidth());
 
 	}
 
@@ -118,11 +112,10 @@ public class LandingPage_PageObject extends Locators {
 		WebElement logoSize = driver.findElement(logoImageLocator);
 		Assert.assertEquals("User failed to assert logo Height", Height_1, logoSize.getSize().getHeight());
 		Assert.assertEquals("user failed to assert width of logo ", width_1, +logoSize.getSize().getWidth());
-
-		System.out.println("User successfully assert log width and height are respectively "
-				+ logoSize.getSize().getWidth() + " and " + logoSize.getSize().getHeight());
-
+		
 		scn.log("User successfully assert log height and width are respectively " + logoSize.getSize().getHeight()
+				+ " and " + logoSize.getSize().getWidth());
+		logger.info("User successfully assert log height and width are respectively " + logoSize.getSize().getHeight()
 				+ " and " + logoSize.getSize().getWidth());
 	}
 

@@ -4,6 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import base.TestContext;
+import io.cucumber.java.Scenario;
 
 /**
  * This 'JavaScriptUtil' class provides various 'JAVAScript' method. These
@@ -12,9 +16,11 @@ import org.openqa.selenium.WebElement;
  * 
  * @author Pravinkumar D Kadam
  */
-public class JavaScriptUtil {
+public class JavaScriptUtil extends TestContext {
 
+	Scenario scn;
 	WebDriver driver;
+	WebDriverWait wait;
 
 	/**
 	 * This parameterized constructor initialize WebDriver
@@ -22,8 +28,10 @@ public class JavaScriptUtil {
 	 * @param driver
 	 * @author Pravinkumar D Kadam
 	 */
-	public JavaScriptUtil(WebDriver driver) {
+	public JavaScriptUtil(WebDriver driver, Scenario scn, WebDriverWait wait) {
 		this.driver = driver;
+		this.scn = scn;
+		this.wait = wait;
 	}
 
 	/**
@@ -38,7 +46,7 @@ public class JavaScriptUtil {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
-	
+
 	/**
 	 * This method will scroll the WebPage until the element is not visible on the
 	 * page
@@ -89,10 +97,21 @@ public class JavaScriptUtil {
 	 * @param element
 	 * @author Pravinkumar D Kadam
 	 */
-	public void drawBorder(WebElement element) {
+	public void drawBorder_ByElement(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].style.border='3px solid red'", element);
 	}
 
-	
+	/**
+	 * This JavaScript method used to draw a border around the element.
+	 * 
+	 * @param By Locator
+	 * @author Pravinkumar D Kadam
+	 */
+	public void drawBorder_Bylocator(By locator) {
+		WebElement element = driver.findElement(locator);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].style.border='3px solid red'", element);
+	}
+
 }

@@ -1,6 +1,9 @@
 
 package pageObjects;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /* Author:  Pravinkumar D Kadam
  * Company: VisionIT
  * Date:    19-August-2021
@@ -9,58 +12,39 @@ package pageObjects;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import Utilities.JavaScriptUtil;
-import Utilities.Utilities;
 import base.TestContext;
+import interfaces.Locators;
+import interfaces.Variables;
 import io.cucumber.java.Scenario;
-import locatorsAndVeriablies.Locators;
 
 /**
- * There is a object repository for the operations offered by 'SignInPage_PageObjects' class.
- * This class help to achieve encapsulation.
+ * There is a object repository for the operations offered by
+ * 'SignInPage_PageObjects' class. This class help to achieve encapsulation.
  * 
  * @Author: Pravinkumar D Kadam
  * @Company: VisionIT
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
-public class SignInPage_PageObjects extends Locators {
+public class SignInPage_PageObjects extends TestContext implements Locators, Variables {
 
-	public Scenario scn;
+	private static final Logger logger = LogManager.getLogger(SignInPage_PageObjects.class);
+
+	Scenario scn;
 	WebDriver driver;
-	TestContext testContext;
-	WebDriverWait wait;
-	JavaScriptUtil javaScriptUtil;
-	Utilities utilities;
 
 	/**
 	 * This is parameterized constructor of SignInPageObjects class
 	 * 
 	 * @param driver
-	 * @param wait
 	 * @param scn
 	 * @author Pravinkumar D Kadam
 	 */
-	public SignInPage_PageObjects(WebDriver driver, WebDriverWait wait, Scenario scn) {
+	public SignInPage_PageObjects(WebDriver driver, Scenario scn) {
 		this.driver = driver;
-		this.wait = wait;
 		this.scn = scn;
-		utilities= new Utilities(this.driver, this.wait, this.scn);
-		javaScriptUtil = new JavaScriptUtil(this.driver);
-	}
-
-	/**
-	 * This is parameterized constructor of SignInPageObjects class
-	 * 
-	 * @param testContext
-	 * @author Pravinkumar D Kadam
-	 */
-	public SignInPage_PageObjects(TestContext testContext) {
-		this.testContext = testContext;
-		this.scn = testContext.scn;
 	}
 
 	/**
@@ -70,10 +54,9 @@ public class SignInPage_PageObjects extends Locators {
 	 */
 	public void ClickSignButton() {
 		utilities.waitForElementClickable(SignButton_Locator);
-		WebElement buttonClick = driver.findElement(SignButton_Locator);
-		javaScriptUtil.flash(buttonClick);
-		buttonClick.click();
+		utilities.ClickElement(SignButton_Locator);
 		scn.log("Click on SignIn Button.");
+		logger.info("Click on SignIn Button.");
 	}
 
 	/**
@@ -87,6 +70,7 @@ public class SignInPage_PageObjects extends Locators {
 	public String NewCreatedMailId(String mail, String mailTag) {
 		String CurrentMail = mail + System.currentTimeMillis() + mailTag;
 		scn.log("New Created Mail ID is :> " + CurrentMail);
+		logger.info("New Created Mail ID is :> " + CurrentMail);
 		return CurrentMail;
 	}
 
@@ -100,12 +84,11 @@ public class SignInPage_PageObjects extends Locators {
 	 */
 	public void enterMailID(String mail, String mailTag) {
 		String CurrentMail = NewCreatedMailId(mail, mailTag);
-		WebElement mailBox = driver.findElement(SignPageMailBox_Locator);
 		javaScriptUtil.scrollIntoView_ByLocator(Authentication_Locator);
-		javaScriptUtil.flash(mailBox);
-		mailBox.sendKeys(CurrentMail);
+		utilities.enterText(CurrentMail, SignPageMailBox_Locator);
 		scn.log("Mail use to crate new account :> " + CurrentMail);
-		System.out.println("Mail use to crate new account :> " + CurrentMail);
+		logger.info("Mail use to crate new account :> " + CurrentMail);
+
 	}
 
 	/**
@@ -114,14 +97,16 @@ public class SignInPage_PageObjects extends Locators {
 	 * @author Pravinkumar D Kadam
 	 */
 	public void ClickCreatAccountButton() {
-		WebElement clickOn = driver.findElement(CreatAccountButton_Locator);
-		javaScriptUtil.flash(clickOn);
-		clickOn.click();
+		utilities.ClickElement(CreatAccountButton_Locator);
 		scn.log("Click on Create an Account Button.");
+		logger.info("Click on Create an Account Button.");
+
 		wait.until(ExpectedConditions.visibilityOfElementLocated(VerifycreateAccountTitle_Locator));
 		Assert.assertEquals("Account is not created.", VerifycreateAccountTitle_variable,
 				driver.findElement(VerifycreateAccountTitle_Locator).getText());
 		scn.log("Test case is asserted and mail ID is valid to create new account :> "
+				+ VerifycreateAccountTitle_variable);
+		logger.info("Test case is asserted and mail ID is valid to create new account :> "
 				+ VerifycreateAccountTitle_variable);
 	}
 

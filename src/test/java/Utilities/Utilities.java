@@ -1,11 +1,12 @@
 package Utilities;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import base.TestContext;
@@ -19,29 +20,24 @@ import io.cucumber.java.Scenario;
  * @Author: Pravinkumar D Kadam
  * @Description: Test com.automationPractice-BDD FW development
  */
-public class Utilities {
+public class Utilities extends TestContext {
 
-	public Scenario scn;
-	public WebDriver driver;
-	public WebDriverWait wait;
-	JavaScriptUtil javaScriptUtil;
-	ScreenShot screenShot;
+	private static final Logger logger = LogManager.getLogger(Utilities.class);
 
+	Scenario scn;
+	WebDriver driver;
+	WebDriverWait wait;
+	
 	/**
 	 * This is constructor of Utilities class. This constructor initialize
 	 * WebDriver, WebDriverWait, WebDriverWait, Scenario
-	 * 
-	 * @param driver
-	 * @param wait
-	 * @param scn
 	 * @author Pravinkumar D Kadam
 	 */
-	public Utilities(WebDriver driver, WebDriverWait wait, Scenario scn) {
+	public Utilities(WebDriver driver,Scenario scn,WebDriverWait wait)
+	{
 		this.driver = driver;
-		this.wait = wait;
 		this.scn = scn;
-		javaScriptUtil = new JavaScriptUtil(this.driver);
-		screenShot = new ScreenShot(this.driver, this.scn);
+		this.wait = wait;
 	}
 
 	/**
@@ -65,6 +61,7 @@ public class Utilities {
 		Assert.assertEquals("Url assertion failed", url, driver.getCurrentUrl());
 		System.out.println("User successfully asserted url and test case passed");
 		scn.log("asserting url " + url + " with current page url :> " + driver.getCurrentUrl());
+		logger.info("asserting url " + url + " with current page url :> " + driver.getCurrentUrl());
 	}
 
 	/**
@@ -76,6 +73,7 @@ public class Utilities {
 	 */
 	public String getCurentPageTittle() {
 		scn.log("user fetching current page title :> " + driver.getTitle());
+		logger.info("user fetching current page title :> " + driver.getTitle());
 		return driver.getTitle();
 	}
 
@@ -90,20 +88,22 @@ public class Utilities {
 		Assert.assertEquals("user unable to asserting page title ", title, driver.getTitle());
 		System.out.println("User Assert Page Title successfully Test case passed.");
 		scn.log("User assert Current page tile '" + driver.getTitle() + "' successfully.");
+		logger.info("User assert Current page tile '" + driver.getTitle() + "' successfully.");
 	}
 
 	/**
-	 * Method take screen Shot If any Scenario is failed.
-	 * And finally closed all tab of web browser.
+	 * Method take screen Shot If any Scenario is failed. And finally closed all tab
+	 * of web browser.
 	 * 
 	 * @author Pravinkumar D Kadam
 	 */
-	public void closeDriver() {
+	public void closeDriver(Scenario scn) {
 		try {
-			screenShot.ScreenShot(scn);
+			screenShot.ScreenShotOfFailedScenario(scn);
 		} finally {
 			driver.quit();
 			scn.log("Browser closed.");
+			logger.info("Browser closed.");
 		}
 	}
 
@@ -116,9 +116,9 @@ public class Utilities {
 	 * @author Pravinkumar D Kadam
 	 */
 	public void enterText(String text, By Locator) {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(Locator));
+		utilities.waitForElementVisibilityOfElementLocated(Locator);
 		WebElement element = driver.findElement(Locator);
-		javaScriptUtil.drawBorder(element);
+		javaScriptUtil.drawBorder_ByElement(element);
 		element.sendKeys(text);
 	}
 
@@ -129,11 +129,12 @@ public class Utilities {
 	 * @author Pravinkumar D Kadam
 	 */
 	public void ClickElement(By locator) {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		utilities.waitForElementVisibilityOfElementLocated(locator);
 		WebElement element = driver.findElement(locator);
 		javaScriptUtil.flash(element);
 		element.click();
 		scn.log("Click on element.");
+		logger.info("Click on element.");
 	}
 
 	/**
@@ -144,5 +145,15 @@ public class Utilities {
 	public void waitForElementClickable(By locator) {
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
+	
+	/**
+	 * This method wait Explicitly for 40 sec until element is Visible.
+	 * 
+	 * @param locator
+	 */
+	public void waitForElementVisibilityOfElementLocated(By locator) {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+
 
 }

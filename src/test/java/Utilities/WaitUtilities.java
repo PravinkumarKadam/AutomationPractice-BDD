@@ -2,6 +2,7 @@ package Utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import io.cucumber.java.Scenario;
 
 /**
@@ -11,14 +12,17 @@ import io.cucumber.java.Scenario;
  */
 public class WaitUtilities {
 
-	public Scenario scn;
-	public WebDriver driver;
-
-	public WaitUtilities(WebDriver driver, Scenario scn) {
+	Scenario scn;
+	WebDriver driver;
+	WebDriverWait wait;
+	
+	public WaitUtilities(WebDriver driver,Scenario scn,WebDriverWait wait)
+	{
 		this.driver = driver;
 		this.scn = scn;
+		this.wait = wait;
 	}
-
+	
 	/**
 	 * This method will pause the script for 3000 milliseconds i.e. 3sec
 	 * 
