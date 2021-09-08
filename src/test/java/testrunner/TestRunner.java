@@ -14,7 +14,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = "src/test/resources/features",
 		glue = "stepDepinations",
-		tags = " ",
+		tags = "@LandingPageTest",
 		plugin = {"pretty",
 				"html:target/html/Autocucumber-BDD.html",
 				"json:target/json/AutoPrac-BDD.json",

@@ -3,6 +3,8 @@ package base;
 import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -21,8 +23,9 @@ import org.openqa.selenium.opera.OperaOptions;
  */
 public class BrowserFactory {
 
-	private static WebDriver driver = null;
+	private static final Logger logger = LogManager.getLogger(BrowserFactory.class);
 
+	private static WebDriver driver = null;
 	Properties prop;
 	public String BROWSER_NAME;
 
@@ -37,10 +40,10 @@ public class BrowserFactory {
 	public Properties intialization_pro() {
 		prop = new Properties();
 		try {
-			FileInputStream file = new FileInputStream("/src/test/resources/config.properties");
+			FileInputStream file = new FileInputStream(".//src/test/resources/config.properties");
 			prop.load(file);
 		} catch (Exception e) {
-			System.out.println("FileNotFoundException : file path is not correct \n"
+			logger.info("FileNotFoundException : file path is not correct \n"
 					+ "IOException : Exception occured while file loading.");
 			e.printStackTrace();
 		}
@@ -57,23 +60,25 @@ public class BrowserFactory {
 	 * @author Pravinkumar D kadam
 	 */
 	public WebDriver openingBrowser() {
-		String BrowserName = prop.getProperty("browser");
-		int implicitWait = Integer.parseInt(prop.getProperty("ImplicitWait"));
+
+		String BrowserName = prop.getProperty("browser").trim();
+		int implicitWait = Integer.parseInt(prop.getProperty("ImplicitWait").trim());
+
+		logger.info("Browser Name is : " + BrowserName);
+
+		BROWSER_NAME = BrowserName;
 
 		if (BrowserName.equalsIgnoreCase("chrome")) {
+
 			if (prop.getProperty("headless").equalsIgnoreCase("yes")) {
 				ChromeOptions opt = new ChromeOptions();
 				opt.addArguments("--headless");
 
 				driver = new ChromeDriver(opt);
-			}
-
-			else {
+			} else {
 				driver = new ChromeDriver();
 			}
-		}
-
-		else if (BrowserName.equalsIgnoreCase("firefox")) {
+		} else if (BrowserName.equalsIgnoreCase("firefox")) {
 
 			if (prop.getProperty("headless").equalsIgnoreCase("yes")) {
 				FirefoxOptions opt = new FirefoxOptions();
@@ -85,9 +90,7 @@ public class BrowserFactory {
 			else {
 				driver = new FirefoxDriver();
 			}
-		}
-
-		else if (BrowserName.equalsIgnoreCase("opera")) {
+		} else if (BrowserName.equalsIgnoreCase("opera")) {
 
 			if (prop.getProperty("headless").equalsIgnoreCase("yes")) {
 				OperaOptions opt = new OperaOptions();
@@ -97,13 +100,12 @@ public class BrowserFactory {
 			} else {
 				driver = new OperaDriver();
 			}
-		}
-
-		else if (BrowserName.equalsIgnoreCase("edge")) {
+		} else if (BrowserName.equalsIgnoreCase("edge")) {
 
 			driver = new EdgeDriver();
 		} else {
 			System.out.println("Browser is not available to run so provide another option.");
+			logger.info("Please pass the correct browser name " + BrowserName);
 		}
 
 		if (prop.getProperty("maximize").equalsIgnoreCase("yes")) {

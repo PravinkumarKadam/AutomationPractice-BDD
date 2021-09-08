@@ -30,7 +30,7 @@ public class LandingPage_StepDef {
 	public void setup(Scenario scn) {this.scn = scn;}
 	
 	@Given("user open Web application")
-	public void user_open_web_application() {
+	public void user_open_web_application() throws Exception {
 	  testContext.initializationOfObjects(scn);	
 	}
 

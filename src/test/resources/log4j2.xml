@@ -2,27 +2,26 @@
 <Configuration status="warn">
     <Properties>
         <!-- Setting for creating log file for each run -->
+        <Property name="basePath">logs</Property>
         <property name="filePattern">${date:yyyy-MM-dd-HH_mm_ss}</property>
     </Properties>
 
     <Appenders>
         <!-- Setting for creating log file for each run -->
-        <File name="File" fileName="app_${filePattern}.log" append="false">
+        <File name="File" fileName="${basePath}/AutomationPracticeLog_${filePattern}.log" append="false" filePattern="${basePath}/InterestSmartTestExecutionReport_${filePattern}.log">
             <PatternLayout
                     pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
         </File>
-        <!-- Setting for creating log file on each day basis -->
-        <!--Uncomment this if you want ROLLING File i.e. logs will be in the same file for each day.-->
         <!-- A rolling file Example-->
         <RollingFile name="fileLogger" fileName="app-info.log" filePattern="app-info-%d{yyyy-MM-dd}.log">
-            <PatternLayout>.
+            <PatternLayout>
                 <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
             </PatternLayout>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1" modulate="true" />
             </Policies>
         </RollingFile>
-        -->
+        
 
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout   pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />

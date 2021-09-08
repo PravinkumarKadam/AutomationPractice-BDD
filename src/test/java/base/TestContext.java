@@ -1,5 +1,6 @@
 package base;
 
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -27,9 +28,10 @@ import pageObjects.ValidateSearchBox_PageObject;
  */
 public class TestContext {
 
-	public static WebDriver driver;
-	public static Scenario scn;
-	public static WebDriverWait wait;
+	public  WebDriver driver;
+	public  Scenario scn;
+	public  WebDriverWait wait;
+	public Properties prop;
 
 	public static BrowserFactory browserFactory;
 
@@ -65,17 +67,14 @@ public class TestContext {
 	 * @return Scenario,classes Object, initialize Web Driver, WebDriverWait,
 	 *         etc,...
 	 * @author Pravinkumar D Kadam
+	 * @throws Exception 
 	 */
-	public void initializationOfObjects(Scenario scn) {
+	public void initializationOfObjects(Scenario scn) throws Exception {
 		this.scn = scn;
-		ChromeOptions option = new ChromeOptions();
-		option.addArguments("--Incognito");
-//		option.addArguments("--headless");
-		driver = new ChromeDriver(option);
-		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		wait = new WebDriverWait(driver, 40);
+		browserFactory = new BrowserFactory();
+		prop = browserFactory.intialization_pro();
+		initializeWebDriver();
+		wait = new WebDriverWait(driver, Integer.parseInt(prop.getProperty("WebDriverWaitTimeout").trim()));
 
 		utilities = new Utilities(driver,scn,wait);
 		webDriverUtilities = new WebDriverUtilities(driver,scn,wait);
