@@ -83,5 +83,11 @@ public interface Locators {
 	final By searchBox_Locator = By.xpath("//input[@id='search_query_top']");
 	final By searchBoxSuggestion_Locator = By.xpath("//div[@class='ac_results']//li");
 
+	// #################### ChangeImageColor_PageObject ####################\\
+
+		final By Tshirts_Locator = By.xpath("//ul[@class=\"sf-menu clearfix menu-content sf-js-enabled sf-arrows\"]/li/a[text()='T-shirts']");
+		final By productColorBlue_Locator = By.xpath("//ul[@class='color_to_pick_list clearfix']/li/a[@id='color_2']");
+		final By ColorChangeProduct_Locator = By.xpath("//img[@id='bigpic']");
+
 
 }
