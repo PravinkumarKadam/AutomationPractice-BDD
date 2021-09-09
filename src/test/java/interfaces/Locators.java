@@ -89,5 +89,23 @@ public interface Locators {
 		final By productColorBlue_Locator = By.xpath("//ul[@class='color_to_pick_list clearfix']/li/a[@id='color_2']");
 		final By ColorChangeProduct_Locator = By.xpath("//img[@id='bigpic']");
 
-
+    
+	// #################### ValidateFacebookHandle_PageObject ####################\\
+		final By FacebookHandle_Locator = By.xpath("//li[@class='facebook']");
+		final By ValidateFacebookHandle_Locator = By.xpath("//div[@class=\"tr9rh885\"]//span[text()='Selenium Framework']");
+		
+    // #################### ValidateTwitterHandle_PageObject ####################\\
+		final By TwitterHandle_Locator = By.xpath("//li[@class='twitter']");
+		final By ValidateTwitterHandle_Locator = By.xpath("//div[@class=\"css-1dbjc4n r-1wbh5a2 r-dnmrzs r-1ny4l3l\"]//span[text()='Selenium Framework']");
+		
+		
+    // #################### ValidateYoutubeHandle_PageObject ####################\\
+		final By YoutubeHandle_Locator = By.xpath("//li[@class='youtube']");
+		final By ValidateYoutubeHandle_Locator = By.xpath("//div[@id=\"channel-header-container\"]//yt-formatted-string[text()='Selenium Framework']");
+		
+		
+		
+		
+		
+		
 }

@@ -139,7 +139,7 @@ public class Utilities extends TestContext {
 
 	/**
 	 * This method wait Explicitly for 40 sec until element is available for click.
-	 * 
+	 * @author Pravinkumar D Kadam 
 	 * @param locator
 	 */
 	public void waitForElementClickable(By locator) {
@@ -150,10 +150,24 @@ public class Utilities extends TestContext {
 	 * This method wait Explicitly for 40 sec until element is Visible.
 	 * 
 	 * @param locator
+	 * @author Pravinkumar D Kadam
 	 */
 	public void waitForElementVisibilityOfElementLocated(By locator) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
-
+	/**
+	 * This method used to fetch the text from the WebElement
+	 * and return in form of String
+	 * @param locator
+	 * @return String value of the WebElement
+	 * @author Pravinkumar D Kadam
+	 */
+	public String doGetText(By locator) {
+		String text = null;
+		text = driver.findElement(locator).getText();
+		return text;
+	}
+	
+	
 }

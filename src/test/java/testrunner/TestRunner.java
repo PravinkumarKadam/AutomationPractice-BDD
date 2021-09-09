@@ -14,10 +14,10 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = "src/test/resources/features",
 		glue = "stepDepinations",
-		tags = "@LandingPageTest",
+		tags = "@ValidateYoutubeHandle",
 		plugin = {"pretty",
 				"html:target/html/Autocucumber-BDD.html",
-				"json:target/json/AutoPrac-BDD.json",
+				"json:target/json/AutoPrac-BDD.json", 
 				"junit:target/cucumberXML.xml",
 				"rerun:target/failedrerun.txt"
 		},

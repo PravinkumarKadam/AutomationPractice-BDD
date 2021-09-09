@@ -1,10 +1,7 @@
 package base;
 
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import Utilities.JavaScriptUtil;
 import Utilities.MouseAction;
@@ -18,7 +15,10 @@ import pageObjects.CreateAnAccount_PageObject;
 import pageObjects.LandingPage_PageObject;
 import pageObjects.SendAFriendFeature_PageObject;
 import pageObjects.SignInPage_PageObjects;
+import pageObjects.ValidateFacebookHandle_PageObject;
 import pageObjects.ValidateSearchBox_PageObject;
+import pageObjects.ValidateTwitterHandle_PageObject;
+import pageObjects.ValidateYoutubeHandle_PageObject;
 
 /**
  * This class help to initialize Objects of all classes.
@@ -49,6 +49,9 @@ public class TestContext {
 	public static AllProductPriceAndTotal_PageObject allProductPriceAndTotal_PageObject;
 	public static SendAFriendFeature_PageObject sendAFriendFeature_PageObject;
 	public static ChangeImageColor_PageObject changeImageColor_PageObject;
+	public static ValidateFacebookHandle_PageObject validateFacebookHandle_PageObject;
+	public static ValidateTwitterHandle_PageObject validateTwitterHandle_PageObject;
+	public static ValidateYoutubeHandle_PageObject validateYoutubeHandle_PageObject; 
 
 	/**
 	 * This method use open browser. It also using property file's key to open
@@ -91,7 +94,9 @@ public class TestContext {
 		allProductPriceAndTotal_PageObject = new AllProductPriceAndTotal_PageObject(driver, scn);
 		sendAFriendFeature_PageObject = new SendAFriendFeature_PageObject(driver, scn, wait);
 		changeImageColor_PageObject = new ChangeImageColor_PageObject(driver, scn);
-
+		validateFacebookHandle_PageObject = new ValidateFacebookHandle_PageObject(driver, scn);
+		validateTwitterHandle_PageObject = new ValidateTwitterHandle_PageObject(driver, scn);
+		validateYoutubeHandle_PageObject = new ValidateYoutubeHandle_PageObject(driver, scn);
 	}
 
 }

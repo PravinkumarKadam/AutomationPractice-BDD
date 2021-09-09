@@ -113,5 +113,24 @@ public class JavaScriptUtil extends TestContext {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].style.border='3px solid red'", element);
 	}
+	
+	/**
+	 * This method will scroll down the WebPage to the bottom end
+	 * @author Pravinkumar D Kadam
+	 */
+	public void scrollPageDown() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+	}
+
+	/**
+	 * This method will scroll up the WebPage to the top of 
+	 * the page height
+	 * @author Pravinkumar D Kadam 
+	 */
+	public void scrollPageUp() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(document.body.scrollHeight, 0)");
+	}
 
 }
