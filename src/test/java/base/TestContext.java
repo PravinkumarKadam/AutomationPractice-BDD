@@ -13,10 +13,15 @@ import pageObjects.AllProductPriceAndTotal_PageObject;
 import pageObjects.ChangeImageColor_PageObject;
 import pageObjects.CreateAnAccount_PageObject;
 import pageObjects.LandingPage_PageObject;
+import pageObjects.NewsletterSubscription_PageObject;
 import pageObjects.SendAFriendFeature_PageObject;
 import pageObjects.SignInPage_PageObjects;
+import pageObjects.ValidateCartValueUpdating_PageObject;
 import pageObjects.ValidateFacebookHandle_PageObject;
+import pageObjects.ValidateProductRemovedFromCart_PageObject;
+import pageObjects.ValidateProductsAddedInCart_PageObject;
 import pageObjects.ValidateSearchBox_PageObject;
+import pageObjects.ValidateTotalCorrectInCart_PageObject;
 import pageObjects.ValidateTwitterHandle_PageObject;
 import pageObjects.ValidateYoutubeHandle_PageObject;
 
@@ -51,9 +56,14 @@ public class TestContext {
 	public static ChangeImageColor_PageObject changeImageColor_PageObject;
 	public static ValidateFacebookHandle_PageObject validateFacebookHandle_PageObject;
 	public static ValidateTwitterHandle_PageObject validateTwitterHandle_PageObject;
-	public static ValidateYoutubeHandle_PageObject validateYoutubeHandle_PageObject; 
-
-	/**
+	public static ValidateYoutubeHandle_PageObject validateYoutubeHandle_PageObject;  
+	public static NewsletterSubscription_PageObject newsletterSubscription_PageObject;
+	public static ValidateCartValueUpdating_PageObject validateCartValueUpdating_PageObject;
+	public static ValidateProductsAddedInCart_PageObject validateProductsAddedInCart_PageObject;
+	public static ValidateTotalCorrectInCart_PageObject validateTotalCorrectInCart_PageObject;
+    public static ValidateProductRemovedFromCart_PageObject validateProductRemovedFromCart_PageObject;
+   
+    /**
 	 * This method use open browser. It also using property file's key to open
 	 * specific Browser , set implicitly Wait , maximize browser , etc...
 	 * 
@@ -97,6 +107,11 @@ public class TestContext {
 		validateFacebookHandle_PageObject = new ValidateFacebookHandle_PageObject(driver, scn);
 		validateTwitterHandle_PageObject = new ValidateTwitterHandle_PageObject(driver, scn);
 		validateYoutubeHandle_PageObject = new ValidateYoutubeHandle_PageObject(driver, scn);
+		newsletterSubscription_PageObject = new NewsletterSubscription_PageObject(driver, scn, wait);
+		validateCartValueUpdating_PageObject = new ValidateCartValueUpdating_PageObject(driver, scn);
+		validateProductsAddedInCart_PageObject = new ValidateProductsAddedInCart_PageObject(driver, scn);
+		validateTotalCorrectInCart_PageObject = new ValidateTotalCorrectInCart_PageObject(driver, scn);
+		validateProductRemovedFromCart_PageObject  = new ValidateProductRemovedFromCart_PageObject(driver, scn);
 	}
 
 }

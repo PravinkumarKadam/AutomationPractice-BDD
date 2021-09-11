@@ -1,5 +1,7 @@
 package Utilities;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -27,14 +29,14 @@ public class Utilities extends TestContext {
 	Scenario scn;
 	WebDriver driver;
 	WebDriverWait wait;
-	
+
 	/**
 	 * This is constructor of Utilities class. This constructor initialize
 	 * WebDriver, WebDriverWait, WebDriverWait, Scenario
+	 * 
 	 * @author Pravinkumar D Kadam
 	 */
-	public Utilities(WebDriver driver,Scenario scn,WebDriverWait wait)
-	{
+	public Utilities(WebDriver driver, Scenario scn, WebDriverWait wait) {
 		this.driver = driver;
 		this.scn = scn;
 		this.wait = wait;
@@ -133,19 +135,18 @@ public class Utilities extends TestContext {
 		WebElement element = driver.findElement(locator);
 		javaScriptUtil.flash(element);
 		element.click();
-		scn.log("Click on element.");
-		logger.info("Click on element.");
 	}
 
 	/**
 	 * This method wait Explicitly for 40 sec until element is available for click.
-	 * @author Pravinkumar D Kadam 
+	 * 
+	 * @author Pravinkumar D Kadam
 	 * @param locator
 	 */
 	public void waitForElementClickable(By locator) {
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
-	
+
 	/**
 	 * This method wait Explicitly for 40 sec until element is Visible.
 	 * 
@@ -157,17 +158,23 @@ public class Utilities extends TestContext {
 	}
 
 	/**
-	 * This method used to fetch the text from the WebElement
-	 * and return in form of String
+	 * This method used to fetch the text from the WebElement and return in form of
+	 * String
+	 * 
 	 * @param locator
 	 * @return String value of the WebElement
 	 * @author Pravinkumar D Kadam
 	 */
 	public String doGetText(By locator) {
 		String text = null;
+		WebElement element = driver.findElement(locator);
+		javaScriptUtil.flash(element);
 		text = driver.findElement(locator).getText();
 		return text;
 	}
+
 	
+
 	
+
 }
