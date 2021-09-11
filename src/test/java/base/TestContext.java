@@ -61,7 +61,7 @@ public class TestContext {
 	public static ValidateCartValueUpdating_PageObject validateCartValueUpdating_PageObject;
 	public static ValidateProductsAddedInCart_PageObject validateProductsAddedInCart_PageObject;
 	public static ValidateTotalCorrectInCart_PageObject validateTotalCorrectInCart_PageObject;
-    public static ValidateProductRemovedFromCart_PageObject validateProductRemovedFromCart_PageObject;
+        public static ValidateProductRemovedFromCart_PageObject validateProductRemovedFromCart_PageObject;
    
     /**
 	 * This method use open browser. It also using property file's key to open
