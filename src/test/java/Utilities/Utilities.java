@@ -1,7 +1,6 @@
 package Utilities;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -173,7 +172,21 @@ public class Utilities extends TestContext {
 		return text;
 	}
 
-	
+
+	/**
+	 * This method help to create different new Mail ID.
+	 * 
+	 * @param mail
+	 * @param mailTag
+	 * @return Mail ID
+	 * @author Pravinkumar D Kadam
+	 */
+	public String newCreatedMailId(String mail, String mailTag) {
+		String CurrentMail = mail + System.currentTimeMillis() + mailTag;
+		scn.log("New Created Mail ID is :> " + CurrentMail);
+		logger.info("New Created Mail ID is :> " + CurrentMail);
+		return CurrentMail;
+	}
 
 	
 

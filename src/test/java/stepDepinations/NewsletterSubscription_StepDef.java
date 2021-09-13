@@ -13,9 +13,9 @@ import io.cucumber.java.en.Then;
  */
 public class NewsletterSubscription_StepDef extends TestContext {
 
-	@Then("Send a random email id {string} in newsletter subscription text box")
-	public void send_a_random_email_id_in_newsletter_subscription_text_box(String MailID) {
-		newsletterSubscription_PageObject.send_random_emailID_in_newsletter_subscription_box(MailID);
+	@Then("Send a random email id {string} and {string} in newsletter subscription text box")
+	public void send_a_random_email_id_in_newsletter_subscription_text_box(String MailID,String Tag) {
+		newsletterSubscription_PageObject.send_random_emailID_in_newsletter_subscription_box(MailID,Tag);
 	}
 
 	@Then("Click on proceed button")

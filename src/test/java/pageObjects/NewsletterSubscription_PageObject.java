@@ -45,8 +45,9 @@ public class NewsletterSubscription_PageObject extends TestContext implements Lo
 	 * @author Pravinkumar D Kadam
 	 * @param mailID
 	 */
-	public void send_random_emailID_in_newsletter_subscription_box(String mailID) {
+	public void send_random_emailID_in_newsletter_subscription_box(String mailName,String MailTag) {
 		javaScriptUtil.scrollPageDown();
+		String mailID = utilities.newCreatedMailId(mailName, MailTag);
 		utilities.enterText(mailID, newsletterSubscriptionBox_Locator);
 		scn.log("Email ID '" + mailID+"' in newsletter subscription box enter.");
 		logger.info("Email ID '" + mailID+"' in newsletter subscription box enter.");

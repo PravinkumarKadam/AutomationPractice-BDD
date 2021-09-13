@@ -59,20 +59,6 @@ public class SignInPage_PageObjects extends TestContext implements Locators, Var
 		logger.info("Click on SignIn Button.");
 	}
 
-	/**
-	 * This method help to create different new Mail ID.
-	 * 
-	 * @param mail
-	 * @param mailTag
-	 * @return Mail ID
-	 * @author Pravinkumar D Kadam
-	 */
-	public String NewCreatedMailId(String mail, String mailTag) {
-		String CurrentMail = mail + System.currentTimeMillis() + mailTag;
-		scn.log("New Created Mail ID is :> " + CurrentMail);
-		logger.info("New Created Mail ID is :> " + CurrentMail);
-		return CurrentMail;
-	}
 
 	/**
 	 * Method use mail , mailTag in parameter and create new mail Id with the help
@@ -83,7 +69,7 @@ public class SignInPage_PageObjects extends TestContext implements Locators, Var
 	 * @author Pravinkumar D Kadam
 	 */
 	public void enterMailID(String mail, String mailTag) {
-		String CurrentMail = NewCreatedMailId(mail, mailTag);
+		String CurrentMail = utilities.newCreatedMailId(mail, mailTag);
 		javaScriptUtil.scrollIntoView_ByLocator(Authentication_Locator);
 		utilities.enterText(CurrentMail, SignPageMailBox_Locator);
 		scn.log("Mail use to crate new account :> " + CurrentMail);
