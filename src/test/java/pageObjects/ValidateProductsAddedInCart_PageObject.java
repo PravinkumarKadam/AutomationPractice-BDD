@@ -3,6 +3,9 @@ package pageObjects;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -25,26 +28,14 @@ import io.cucumber.java.Scenario;
  * @Date: 12-September-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
+@Log4j2
+@AllArgsConstructor
 public class ValidateProductsAddedInCart_PageObject extends TestContext implements Locators, Variables {
-
-	private static final Logger logger = LogManager.getLogger(ValidateProductsAddedInCart_PageObject.class);
 
 	WebDriver driver;
 	Scenario scn;
 
-	/**
-	 * It is parameterized constructor of ValidateProductsAddedInCart_PageObject
-	 * class. It use to initialize all driver, Scenario, WebDriverWait, TestContext,
-	 * etc......
-	 * 
-	 * @param driver
-	 * @param scn
-	 * @author Pravinkumar D Kadam
-	 */
-	public ValidateProductsAddedInCart_PageObject(WebDriver driver, Scenario scn) {
-		this.driver = driver;
-		this.scn = scn;
-	}
+
 
 	/**
 	 * method help to validate the product name showing up in the cart.
@@ -67,7 +58,7 @@ public class ValidateProductsAddedInCart_PageObject extends TestContext implemen
 			scn.log("                    " + (i+1) + " ) " + productAddedInCart.get(i).getText());
 			Assert.assertEquals("Assertion failed.", ActualProductName.get(i), productAddedInCart.get(i).getText());
 		}
-		logger.info("validate the product name showing up in the cart.");
+		log.info("validate the product name showing up in the cart.");
 	}
 
 }

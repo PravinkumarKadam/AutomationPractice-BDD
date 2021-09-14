@@ -1,23 +1,15 @@
 
 package pageObjects;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-/* Author:  Pravinkumar D Kadam
- * Company: VisionIT
- * Date:    19-August-2021
- * Description: Test com.automationPractice-BDD FW development
- */
-
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import base.TestContext;
 import interfaces.Locators;
 import interfaces.Variables;
 import io.cucumber.java.Scenario;
+
 
 /**
  * There is a object repository for the operations offered by
@@ -28,24 +20,13 @@ import io.cucumber.java.Scenario;
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
+@Log4j2
+@AllArgsConstructor
 public class SignInPage_PageObjects extends TestContext implements Locators, Variables {
 
-	private static final Logger logger = LogManager.getLogger(SignInPage_PageObjects.class);
-
-	Scenario scn;
 	WebDriver driver;
+	Scenario scn;
 
-	/**
-	 * This is parameterized constructor of SignInPageObjects class
-	 * 
-	 * @param driver
-	 * @param scn
-	 * @author Pravinkumar D Kadam
-	 */
-	public SignInPage_PageObjects(WebDriver driver, Scenario scn) {
-		this.driver = driver;
-		this.scn = scn;
-	}
 
 	/**
 	 * This method click on Sign Button on Sign In Page
@@ -56,7 +37,7 @@ public class SignInPage_PageObjects extends TestContext implements Locators, Var
 		utilities.waitForElementClickable(SignButton_Locator);
 		utilities.ClickElement(SignButton_Locator);
 		scn.log("Click on SignIn Button.");
-		logger.info("Click on SignIn Button.");
+		log.info("Click on SignIn Button.");
 	}
 
 
@@ -73,7 +54,7 @@ public class SignInPage_PageObjects extends TestContext implements Locators, Var
 		javaScriptUtil.scrollIntoView_ByLocator(Authentication_Locator);
 		utilities.enterText(CurrentMail, SignPageMailBox_Locator);
 		scn.log("Mail use to crate new account :> " + CurrentMail);
-		logger.info("Mail use to crate new account :> " + CurrentMail);
+		log.info("Mail use to crate new account :> " + CurrentMail);
 
 	}
 
@@ -85,14 +66,13 @@ public class SignInPage_PageObjects extends TestContext implements Locators, Var
 	public void ClickCreatAccountButton() {
 		utilities.ClickElement(CreatAccountButton_Locator);
 		scn.log("Click on Create an Account Button.");
-		logger.info("Click on Create an Account Button.");
-
-		wait.until(ExpectedConditions.visibilityOfElementLocated(VerifycreateAccountTitle_Locator));
+		log.info("Click on Create an Account Button.");
+        utilities.waitForElementVisibilityOfElementLocated(VerifycreateAccountTitle_Locator);
 		Assert.assertEquals("Account is not created.", VerifycreateAccountTitle_variable,
 				driver.findElement(VerifycreateAccountTitle_Locator).getText());
 		scn.log("Test case is asserted and mail ID is valid to create new account :> "
 				+ VerifycreateAccountTitle_variable);
-		logger.info("Test case is asserted and mail ID is valid to create new account :> "
+		log.info("Test case is asserted and mail ID is valid to create new account :> "
 				+ VerifycreateAccountTitle_variable);
 	}
 

@@ -1,6 +1,7 @@
 package stepDepinations;
 
 import base.TestContext;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
@@ -13,7 +14,7 @@ import io.cucumber.java.en.When;
  * @Date:    19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  * @see
- * Following script is the automation testing simulation
+ * @Following script is the automation testing simulation
  * for the Application - "http://automationpractice.com/index.php?" 
  */
 public class LandingPage_StepDef {
@@ -25,10 +26,15 @@ public class LandingPage_StepDef {
 		this.testContext = testContext;
 		this.scn = testContext.scn;		
 	}
-	
+
 	@Before
-	public void setup(Scenario scn) {this.scn = scn;}
-	
+	public void setUp(Scenario scn){
+		this.scn = scn;	}
+
+	@After
+	public void takeScreenShots(){testContext.screenShot.ScreenShotOfFailedScenario(scn);}
+
+
 	@Given("user open Web application")
 	public void user_open_web_application() throws Exception {
 	  testContext.initializationOfObjects(scn);	

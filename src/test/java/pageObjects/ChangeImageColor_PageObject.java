@@ -1,7 +1,7 @@
 package pageObjects;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,28 +20,13 @@ import io.cucumber.java.Scenario;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
+@Log4j2
+@AllArgsConstructor
 public class ChangeImageColor_PageObject extends TestContext implements Locators {
-
-	private static final Logger logger = LogManager.getLogger(ChangeImageColor_PageObject.class);
 
 	WebDriver driver;
 	Scenario scn;
 
-	
-	/**
-	 * It is parameterized constructor of ChangeImageColor_PageObject class.
-	 * It use to initialize all driver, Scenario, WebDriverWait, TestContext,
-	 * etc......
-	 * 
-	 * @param driver
-	 * @param scn
-	 * 
-	 * @author Pravinkumar D Kadam
-	 */
-	public ChangeImageColor_PageObject(WebDriver driver, Scenario scn) {
-		this.scn = scn;
-		this.driver = driver;
-	}
 
 	/**
 	 *Method help to Select category T-shirts.
@@ -50,7 +35,7 @@ public class ChangeImageColor_PageObject extends TestContext implements Locators
 	public void select_category_t_shirts() {
 		utilities.ClickElement(Tshirts_Locator);
 		scn.log("Click on T-shirts product category.");
-		logger.info("Click on T-shirts product category.");
+		log.info("Click on T-shirts product category.");
 	}
 
 	/**
@@ -62,7 +47,7 @@ public class ChangeImageColor_PageObject extends TestContext implements Locators
 		mouseAction.moveToelement(productColorBlue_Locator);
 		utilities.ClickElement(productColorBlue_Locator);
 		scn.log("Click on blue color.");
-		logger.info("Click on blue color.");
+		log.info("Click on blue color.");
 	}
 
 	/**
@@ -75,7 +60,7 @@ public class ChangeImageColor_PageObject extends TestContext implements Locators
 		WebElement ele = driver.findElement(ColorChangeProduct_Locator);
 		Assert.assertTrue(ele.isDisplayed());
 		scn.log("Assertion completed and product color is changed.");
-		logger.info("Assertion completed and product color is changed.");
+		log.info("Assertion completed and product color is changed.");
 	}
 
 }

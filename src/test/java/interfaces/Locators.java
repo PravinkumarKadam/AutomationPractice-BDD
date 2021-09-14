@@ -110,11 +110,11 @@ public interface Locators {
 	final By productPrintedChiffonDress_Locator = By
 			.xpath("//ul[@id='homefeatured']//h5/a[@title='Printed Chiffon Dress']");
 	final By product_AddToCart_Blouse_Locator = By.xpath(
-			"//ul[@id='homefeatured']//a[@title='Blouse']//parent::h5[@itemprop='name']//following-sibling::div[@class='button-container']//span[text()='Add to cart']");
+			"//ul[@id='homefeatured']//a[@title='Blouse']//parent::h5[@itemprop='name']//@Following-sibling::div[@class='button-container']//span[text()='Add to cart']");
 	final By product_AddToCart_ShortSleeve_T_Shirts_Locator = By.xpath(
-			"//ul[@id='homefeatured']//a[@title='Faded Short Sleeve T-shirts']//parent::h5[@itemprop='name']//following-sibling::div[@class='button-container']//span[text()='Add to cart']");
+			"//ul[@id='homefeatured']//a[@title='Faded Short Sleeve T-shirts']//parent::h5[@itemprop='name']//@Following-sibling::div[@class='button-container']//span[text()='Add to cart']");
 	final By product_AddToCart_PrintedChiffonDress_Locator = By.xpath(
-			"//ul[@id='homefeatured']//a[@title='Printed Chiffon Dress']//parent::h5[@itemprop='name']//following-sibling::div[@class='button-container']//span[text()='Add to cart']");
+			"//ul[@id='homefeatured']//a[@title='Printed Chiffon Dress']//parent::h5[@itemprop='name']//@Following-sibling::div[@class='button-container']//span[text()='Add to cart']");
 	final By continueShoppingButton_Locator = By.xpath("//span[@title='Continue shopping']/span");
 	final By cartShowingProductCount_Locator = By.xpath("//span[@class='ajax_cart_quantity unvisible']");
 	final By cartProduct_PrizeList_Locator = By.xpath("//div[@class='cart-info']//span[@class='price']");

@@ -1,5 +1,8 @@
 package pageObjects;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -19,26 +22,13 @@ import io.cucumber.java.Scenario;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
+@Log4j2
+@AllArgsConstructor
 public class ValidateCartValueUpdating_PageObject extends TestContext implements Locators, Variables {
-
-	private static final Logger logger = LogManager.getLogger(ValidateCartValueUpdating_PageObject.class);
 
 	WebDriver driver;
 	Scenario scn;
 
-	/**
-	 * It is parameterized constructor of ValidateCartValueUpdating_PageObject
-	 * class. It use to initialize all driver, Scenario, WebDriverWait, TestContext,
-	 * etc......
-	 * 
-	 * @param driver
-	 * @param scn
-	 * @author Pravinkumar D Kadam
-	 */
-	public ValidateCartValueUpdating_PageObject(WebDriver driver, Scenario scn) {
-		this.driver = driver;
-		this.scn = scn;
-	}
 
 	/**
 	 * method help to Click on short_sleeve_t_shirts product and added to Cart.
@@ -50,7 +40,7 @@ public class ValidateCartValueUpdating_PageObject extends TestContext implements
 		mouseAction.moveToelement(ProductsShortSleeve_t_shirts_Locator);
 		utilities.ClickElement(product_AddToCart_ShortSleeve_T_Shirts_Locator);
 		scn.log("Click on short_sleeve_t_shirts product and added to Cart.");
-		logger.info("Click on short_sleeve_t_shirts product and added to Cart.");
+		log.info("Click on short_sleeve_t_shirts product and added to Cart.");
 	}
 
 	/**
@@ -61,7 +51,7 @@ public class ValidateCartValueUpdating_PageObject extends TestContext implements
 	public void clickOnContinueShoppingButton() {
 		utilities.ClickElement(continueShoppingButton_Locator);
 		scn.log("Click On Continue Shopping Button.");
-		logger.info("Click On Continue Shopping Button.");
+		log.info("Click On Continue Shopping Button.");
 	}
 
 	/**
@@ -73,7 +63,7 @@ public class ValidateCartValueUpdating_PageObject extends TestContext implements
 		mouseAction.moveToelement(productBlouse_Locator);
 		utilities.ClickElement(product_AddToCart_Blouse_Locator);
 		scn.log("Click on 'Blouse' product and added to Cart.");
-		logger.info("Click on 'Blouse' product and added to Cart.");
+		log.info("Click on 'Blouse' product and added to Cart.");
 	}
 
 	/**
@@ -85,7 +75,7 @@ public class ValidateCartValueUpdating_PageObject extends TestContext implements
 		mouseAction.moveToelement(productPrintedChiffonDress_Locator);
 		utilities.ClickElement(product_AddToCart_PrintedChiffonDress_Locator);
 		scn.log("Click on 'printed_chiffon_dress' product and added to Cart.");
-		logger.info("Click on 'printed_chiffon_dress' product and added to Cart.");
+		log.info("Click on 'printed_chiffon_dress' product and added to Cart.");
 	}
 
 	/**
@@ -102,7 +92,7 @@ public class ValidateCartValueUpdating_PageObject extends TestContext implements
 		int ExpectedProductCount = Integer.parseInt(ActualProductCount);
 		Assert.assertSame("Assertion failed.", ProductCount, ExpectedProductCount);
 		scn.log("validate the cart is showing up count as ::> " + ExpectedProductCount);
-		logger.info("validate the cart is showing up count as ::> " + ExpectedProductCount);
+		log.info("validate the cart is showing up count as ::> " + ExpectedProductCount);
 	}
 
 	

@@ -1,5 +1,10 @@
 package Utilities;
 
+import base.TestContext;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,19 +15,14 @@ import io.cucumber.java.Scenario;
  * @IMP_Note : Avoid using this utility unless its very much needed
  * @author Pravinkumar D Kadam
  */
-public class WaitUtilities {
+@Log4j2
+@AllArgsConstructor
+public class WaitUtilities  {
 
-	Scenario scn;
 	WebDriver driver;
-	WebDriverWait wait;
-	
-	public WaitUtilities(WebDriver driver,Scenario scn,WebDriverWait wait)
-	{
-		this.driver = driver;
-		this.scn = scn;
-		this.wait = wait;
-	}
-	
+	Scenario scn;
+
+
 	/**
 	 * This method will pause the script for 3000 milliseconds i.e. 3sec
 	 * 

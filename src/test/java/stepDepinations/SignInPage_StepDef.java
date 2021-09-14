@@ -11,7 +11,7 @@ import io.cucumber.java.en.Then;
  * @Description: Test com.automationPractice-BDD FW development
  * 
  * @see
- * Following script is the automation testing simulation
+ * @Following script is the automation testing simulation
  * for the Application - "http://automationpractice.com/index.php?"
  * 
  */

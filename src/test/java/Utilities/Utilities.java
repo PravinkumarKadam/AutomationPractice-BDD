@@ -1,6 +1,9 @@
 package Utilities;
 
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -21,25 +24,17 @@ import io.cucumber.java.Scenario;
  * @Author: Pravinkumar D Kadam
  * @Description: Test com.automationPractice-BDD FW development
  */
+@Log4j2
+@AllArgsConstructor
 public class Utilities extends TestContext {
 
 	private static final Logger logger = LogManager.getLogger(Utilities.class);
 
-	Scenario scn;
 	WebDriver driver;
+	Scenario scn;
 	WebDriverWait wait;
 
-	/**
-	 * This is constructor of Utilities class. This constructor initialize
-	 * WebDriver, WebDriverWait, WebDriverWait, Scenario
-	 * 
-	 * @author Pravinkumar D Kadam
-	 */
-	public Utilities(WebDriver driver, Scenario scn, WebDriverWait wait) {
-		this.driver = driver;
-		this.scn = scn;
-		this.wait = wait;
-	}
+
 
 	/**
 	 * This method use to enter url.
@@ -62,7 +57,7 @@ public class Utilities extends TestContext {
 		Assert.assertEquals("Url assertion failed", url, driver.getCurrentUrl());
 		System.out.println("User successfully asserted url and test case passed");
 		scn.log("asserting url " + url + " with current page url :> " + driver.getCurrentUrl());
-		logger.info("asserting url " + url + " with current page url :> " + driver.getCurrentUrl());
+		log.info("asserting url " + url + " with current page url :> " + driver.getCurrentUrl());
 	}
 
 	/**
@@ -74,7 +69,7 @@ public class Utilities extends TestContext {
 	 */
 	public String getCurentPageTittle() {
 		scn.log("user fetching current page title :> " + driver.getTitle());
-		logger.info("user fetching current page title :> " + driver.getTitle());
+		log.info("user fetching current page title :> " + driver.getTitle());
 		return driver.getTitle();
 	}
 
@@ -89,7 +84,7 @@ public class Utilities extends TestContext {
 		Assert.assertEquals("user unable to asserting page title ", title, driver.getTitle());
 		System.out.println("User Assert Page Title successfully Test case passed.");
 		scn.log("User assert Current page tile '" + driver.getTitle() + "' successfully.");
-		logger.info("User assert Current page tile '" + driver.getTitle() + "' successfully.");
+		log.info("User assert Current page tile '" + driver.getTitle() + "' successfully.");
 	}
 
 	/**
@@ -104,7 +99,7 @@ public class Utilities extends TestContext {
 		} finally {
 			driver.quit();
 			scn.log("Browser closed.");
-			logger.info("Browser closed.");
+			log.info("Browser closed.");
 		}
 	}
 
@@ -184,7 +179,7 @@ public class Utilities extends TestContext {
 	public String newCreatedMailId(String mail, String mailTag) {
 		String CurrentMail = mail + System.currentTimeMillis() + mailTag;
 		scn.log("New Created Mail ID is :> " + CurrentMail);
-		logger.info("New Created Mail ID is :> " + CurrentMail);
+		log.info("New Created Mail ID is :> " + CurrentMail);
 		return CurrentMail;
 	}
 

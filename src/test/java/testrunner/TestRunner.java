@@ -6,6 +6,7 @@ package testrunner;
  * Description: Test com.automationPractice-BDD FW development
  */
 
+
 import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -14,12 +15,13 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = "src/test/resources/features",
 		glue = "stepDepinations",
-		tags = "",
+		tags = "@ValidateTotalCorrectInCart",
 		plugin = {"pretty",
 				"html:target/html/Autocucumber-BDD.html",
-				"json:target/json/AutoPrac-BDD.json", 
+				"json:target/json/AutoPrac-BDD.json",
 				"junit:target/cucumberXML.xml",
-				"rerun:target/failedrerun.txt"
+				"rerun:target/failedrerun.txt",
+				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 		},
 		dryRun = false,
 		monochrome = true,

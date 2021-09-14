@@ -1,8 +1,9 @@
 package pageObjects;
 
 import java.util.List;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,28 +22,13 @@ import io.cucumber.java.Scenario;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
+@Log4j2
+@AllArgsConstructor
 public class AllProductPriceAndTotal_PageObject extends TestContext implements Locators {
 
-	private static final Logger logger = LogManager.getLogger(AllProductPriceAndTotal_PageObject.class);
-
-	Scenario scn;
 	WebDriver driver;
-	
-	/**
-	 * It is parameterized constructor of AllProductPriceAndTotal_PageObject class.
-	 * It use to initialize all driver, Scenario, WebDriverWait, TestContext,
-	 * etc......
-	 * 
-	 * @param driver
-	 * @param scn
-	 * 
-	 * @author Pravinkumar D Kadam
-	 */
-	public AllProductPriceAndTotal_PageObject(WebDriver driver,Scenario scn)
-	{
-		this.driver = driver;
-		this.scn = scn;
-	}
+	Scenario scn;
+
 
 	/**
 	 * Method check 'DRESSES' option and assert all characters in Upper case or not.
@@ -55,7 +41,7 @@ public class AllProductPriceAndTotal_PageObject extends TestContext implements L
 		javaScriptUtil.drawBorder_Bylocator(Dresses_locator);
 		Assert.assertEquals(productName, element.getText());
 		scn.log("Displayed all characters in Upper case, Validatation completed  ::> " + element.getText());
-		logger.info("Displayed all characters in Upper case, Validatation completed  ::> " + element.getText());
+		log.info("Displayed all characters in Upper case, Validatation completed  ::> " + element.getText());
 	}
 
 	/**
@@ -87,7 +73,7 @@ public class AllProductPriceAndTotal_PageObject extends TestContext implements L
 		float Expected_Total = 152.87f;
 		// Assert.assertNotEquals("Assertion failed", Expected_Total, flag);
 		scn.log("The sum of all products Match with actual Total");
-		logger.info("The sum of all products Match with actual Total");
+		log.info("The sum of all products Match with actual Total");
 	}
 
 }

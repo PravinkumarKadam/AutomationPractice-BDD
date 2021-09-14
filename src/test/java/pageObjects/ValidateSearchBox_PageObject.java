@@ -1,6 +1,10 @@
 package pageObjects;
 
 import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -22,26 +26,15 @@ import io.cucumber.java.Scenario;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
+@Log4j2
+@AllArgsConstructor
 public class ValidateSearchBox_PageObject extends TestContext implements Locators {
 
-	private static final Logger logger = LogManager.getLogger(ValidateSearchBox_PageObject.class);
-
-	Scenario scn;
 	WebDriver driver;
+	Scenario scn;
 	WebDriverWait wait;
 
-	/**
-	 * This is constructor of ValidateSearchBoxPageObject class. This constructor
-	 * initialize WebDriver, WebDriverWait, WebDriverWait, Scenario
-	
-	 * @Author: Pravinkumar D Kadam
-	 */
-	public ValidateSearchBox_PageObject(WebDriver driver,Scenario scn,WebDriverWait wait)
-	{
-		this.driver = driver;
-		this.scn = scn;
-		this.wait = wait;
-	}
+
 
 	/**
 	 * It is wrapper Method available in ValidateSearchBoxPageObject class. help to
@@ -52,8 +45,8 @@ public class ValidateSearchBox_PageObject extends TestContext implements Locator
 	 */
 	public void SearchProducSearchBox(String Text) {
 		utilities.enterText(Text, searchBox_Locator);
-		scn.log("Search for the product “Dress” in the search box.");
-		logger.info("Search for the product “Dress” in the search box.");
+		scn.log("Search for the product ï¿½Dressï¿½ in the search box.");
+		log.info("Search for the product ï¿½Dressï¿½ in the search box.");
 	}
 
 	/**
@@ -67,15 +60,15 @@ public class ValidateSearchBox_PageObject extends TestContext implements Locator
 		utilities.waitForElementClickable(searchBoxSuggestion_Locator);
 		List<WebElement> elements = driver.findElements(searchBoxSuggestion_Locator);
 		scn.log("All product get displayed in the list with names ::>");
-		logger.info("All product get displayed in the list with names ::>");
+		log.info("All product get displayed in the list with names ::>");
 		for (int i = 0; i < elements.size(); i++) {
 			scn.log("                                                " + (i + 1) + ") " + elements.get(i).getText());
-			logger.info(
+			log.info(
 					"                                                " + (i + 1) + ") " + elements.get(i).getText());
 		}
 		Assert.assertEquals(7, elements.size());
 		scn.log("Validate with the Expected result as 7 => " + "Actual Result :: " + elements.size());
-		logger.info("Validate with the Expected result as 7 => " + "Actual Result :: " + elements.size());
+		log.info("Validate with the Expected result as 7 => " + "Actual Result :: " + elements.size());
 	}
 
 }

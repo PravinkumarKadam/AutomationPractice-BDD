@@ -1,8 +1,9 @@
 package pageObjects;
 
 import java.util.List;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,25 +22,14 @@ import io.cucumber.java.Scenario;
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
+@Log4j2
+@AllArgsConstructor
 public class CreateAnAccount_PageObject extends TestContext implements Locators, Variables {
 
-	private static final Logger logger = LogManager.getLogger(CreateAnAccount_PageObject.class);
-
-	Scenario scn;
 	WebDriver driver;
+	Scenario scn;
 	WebDriverWait wait;
 
-	/**
-	 * This is constructor of class Use to initialize all
-	 * WebDriver/Scenario/WebDriverWait/etc
-	 * 
-	 * @author Pravinkumar D Kadam
-	 */
-	public CreateAnAccount_PageObject(WebDriver driver, Scenario scn, WebDriverWait wait) {
-		this.driver = driver;
-		this.scn = scn;
-		this.wait = wait;
-	}
 
 	/**
 	 * This method use to select Month from DropDown option
@@ -99,7 +89,7 @@ public class CreateAnAccount_PageObject extends TestContext implements Locators,
 	public void selectGender() {
 		utilities.ClickElement(SelectGender_Mr_Locator);
 		scn.log("Selected Gender is :> " + "Mr.");
-		logger.info("Selected Gender is :> " + "Mr.");
+		log.info("Selected Gender is :> " + "Mr.");
 	}
 
 	/**
@@ -242,7 +232,7 @@ public class CreateAnAccount_PageObject extends TestContext implements Locators,
 		String account = driver.findElement(MyAccount_Locator).getText();
 		Assert.assertEquals("Account is not created.", MyAccount_Variable, account);
 		scn.log("Account is created and asserted successfully :> " + account);
-		logger.info("Account is created and asserted successfully :> " + account);
+		log.info("Account is created and asserted successfully :> " + account);
 	}
 
 	/**
@@ -254,6 +244,6 @@ public class CreateAnAccount_PageObject extends TestContext implements Locators,
 		javaScriptUtil.scrollIntoView_ByLocator(HomePhone_Locator);
 		utilities.ClickElement(RegisterButon_Locator);
 		scn.log("Click on Register Button.");
-		logger.info("Click on Register Button.");
+		log.info("Click on Register Button.");
 	}
 }

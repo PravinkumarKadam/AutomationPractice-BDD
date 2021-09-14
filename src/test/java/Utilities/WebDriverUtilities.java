@@ -1,5 +1,8 @@
 package Utilities;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -19,19 +22,15 @@ import io.cucumber.java.Scenario;
  * 
  * @Author: Pravinkumar D Kadam
  */
+@Log4j2
+@AllArgsConstructor
 public class WebDriverUtilities extends TestContext {
 
-	private static final Logger logger = LogManager.getLogger(WebDriverUtilities.class);
 
-	Scenario scn;
 	WebDriver driver;
+	Scenario scn;
 	WebDriverWait wait;
 
-	public WebDriverUtilities(WebDriver driver, Scenario scn, WebDriverWait wait) {
-		this.driver = driver;
-		this.scn = scn;
-		this.wait = wait;
-	}
 
 	/**
 	 * Method help to select Value From Dropdown.
@@ -46,7 +45,7 @@ public class WebDriverUtilities extends TestContext {
 		Select select = new Select(element);
 		select.selectByValue(value);
 		scn.log("Select Value From Dropdown :> " + value);
-		logger.info("Select Value From Dropdown :> " + value);
+		log.info("Select Value From Dropdown :> " + value);
 	}
 
 }

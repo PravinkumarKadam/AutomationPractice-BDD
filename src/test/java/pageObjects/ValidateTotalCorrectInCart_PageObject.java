@@ -3,6 +3,9 @@ package pageObjects;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -14,6 +17,7 @@ import base.TestContext;
 import interfaces.Locators;
 import interfaces.Variables;
 import io.cucumber.java.Scenario;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * There is a object repository for the operations offered by
@@ -25,26 +29,14 @@ import io.cucumber.java.Scenario;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
+@Log4j2
+@AllArgsConstructor
 public class ValidateTotalCorrectInCart_PageObject extends TestContext implements Locators, Variables {
-
-	private static final Logger logger = LogManager.getLogger(ValidateTotalCorrectInCart_PageObject.class);
 
 	WebDriver driver;
 	Scenario scn;
+	WebDriverWait wait;
 
-	/**
-	 * It is parameterized constructor of ValidateTotalCorrectInCart_PageObject
-	 * class. It use to initialize all driver, Scenario, WebDriverWait, TestContext,
-	 * etc......
-	 * 
-	 * @param driver
-	 * @param scn
-	 * @author Pravinkumar D Kadam
-	 */
-	public ValidateTotalCorrectInCart_PageObject(WebDriver driver, Scenario scn) {
-		this.driver = driver;
-		this.scn = scn;
-	}
 
 	/**
 	 * method help to check the total of all three individual products. method
@@ -74,7 +66,7 @@ public class ValidateTotalCorrectInCart_PageObject extends TestContext implement
 		float TotalCartPrize = Float.parseFloat(utilities.doGetText(cartProductPrize_GrandTotal_Locator).substring(1));
 		Assert.assertEquals(TotalCartPrize, TotalOfThreeIndividualProduct, 2.0f);
 		scn.log("Assert the Individual Product Total with cart Total ::> " + TotalOfThreeIndividualProduct);/////
-		logger.info("Assert the Individual Product Total with cart Total ::> " + TotalOfThreeIndividualProduct);
+		log.info("Assert the Individual Product Total with cart Total ::> " + TotalOfThreeIndividualProduct);
 
 	}
 
@@ -95,7 +87,7 @@ public class ValidateTotalCorrectInCart_PageObject extends TestContext implement
 		}
 		Assert.assertEquals(TotalPrizeAllProductFromCartList, TotalCartPrize, 2.0f);
 		scn.log("Assert the cart Total with individual product Total ::> " + TotalPrizeAllProductFromCartList);
-		logger.info("Assert the cart Total with individual product Total ::> " + TotalCartPrize);
+		log.info("Assert the cart Total with individual product Total ::> " + TotalCartPrize);
 
 	}
 

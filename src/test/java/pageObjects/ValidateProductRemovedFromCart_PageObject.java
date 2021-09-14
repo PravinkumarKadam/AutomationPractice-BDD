@@ -1,5 +1,8 @@
 package pageObjects;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -18,26 +21,13 @@ import io.cucumber.java.Scenario;
  * @Date: 12-September-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
+@Log4j2
+@AllArgsConstructor
 public class ValidateProductRemovedFromCart_PageObject extends TestContext implements Locators {
-
-	private static final Logger logger = LogManager.getLogger(ValidateProductRemovedFromCart_PageObject.class);
 
 	WebDriver driver;
 	Scenario scn;
 
-	/**
-	 * It is parameterized constructor of ValidateProductRemovedFromCart_PageObject
-	 * class. It use to initialize all driver, Scenario, WebDriverWait, TestContext,
-	 * etc......
-	 * 
-	 * @param driver
-	 * @param scn
-	 * @author Pravinkumar D Kadam
-	 */
-	public ValidateProductRemovedFromCart_PageObject(WebDriver driver, Scenario scn) {
-		this.driver = driver;
-		this.scn = scn;
-	}
 
 	/**
 	 * method help to click on cross button to remove product form cart.
@@ -51,7 +41,7 @@ public class ValidateProductRemovedFromCart_PageObject extends TestContext imple
 		utilities.ClickElement(cartProductCancel_ShortSleeve_t_shirtsProduct_Locator);
 		mouseAction.moveToelement(cartShowingProductCount_Locator);
 		scn.log("click on cross button to remove product from cart.");
-		logger.info("click on cross button to remove product from cart.");
+		log.info("click on cross button to remove product from cart.");
 	}
 
 	/**
@@ -67,7 +57,7 @@ public class ValidateProductRemovedFromCart_PageObject extends TestContext imple
 		int ExpectedProductCount = Integer.parseInt(ActualProductCount);
 		Assert.assertSame(CartValue, ExpectedProductCount);
 		scn.log("Validate the cart count After remove product as ::> " + CartValue);//////////////
-		logger.info("Validate the cart count After remove product as ::> " + CartValue);
+		log.info("Validate the cart count After remove product as ::> " + CartValue);
 
 	}
 

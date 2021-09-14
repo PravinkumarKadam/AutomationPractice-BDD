@@ -1,5 +1,8 @@
 package Utilities;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -18,25 +21,14 @@ import io.cucumber.java.Scenario;
  * @author Pravinkumar D Kadam
  *
  */
+@Log4j2
+@AllArgsConstructor
 public class ScreenShot extends TestContext {
 
-	private static final Logger logger = LogManager.getLogger(ScreenShot.class);
-	Scenario scn;
 	WebDriver driver;
+	Scenario scn;
 	WebDriverWait wait;
 
-	/**
-	 * This constructor of ScreenShot class.
-	 * 
-	 * @param driver
-	 * @param wait
-	 * @param scn
-	 */
-	public ScreenShot(WebDriver driver, Scenario scn, WebDriverWait wait) {
-		this.driver = driver;
-		this.scn = scn;
-		this.wait = wait;
-	}
 
 	/**
 	 * Method help to take screen shot if any Scenario is failed.
@@ -51,10 +43,11 @@ public class ScreenShot extends TestContext {
 			TakesScreenshot screenShot = (TakesScreenshot) driver;
 			byte[] data = screenShot.getScreenshotAs(OutputType.BYTES);
 			scn.attach(data, "image/png", "failed step name ::> " + scn.getName());
-			logger.info("Test case isn't passed, screenShot is captured.");
+			log.info("Test case isn't passed, screenShot is captured.");
+			driver.quit();
 		} else {
 			scn.log("Test case is passed, No screenShot is captured.");
-			logger.info("Test case is passed, No screenShot is captured.");
+			log.info("Test case is passed, No screenShot is captured.");
 		}
 
 	}

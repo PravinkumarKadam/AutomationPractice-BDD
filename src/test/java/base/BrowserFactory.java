@@ -3,8 +3,10 @@ package base;
 import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -21,9 +23,8 @@ import org.openqa.selenium.opera.OperaOptions;
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
+@Log4j2
 public class BrowserFactory {
-
-	private static final Logger logger = LogManager.getLogger(BrowserFactory.class);
 
 	private static WebDriver driver = null;
 	Properties prop;
@@ -43,7 +44,7 @@ public class BrowserFactory {
 			FileInputStream file = new FileInputStream(".//src/test/resources/config.properties");
 			prop.load(file);
 		} catch (Exception e) {
-			logger.info("FileNotFoundException : file path is not correct \n"
+			log.info("FileNotFoundException : file path is not correct \n"
 					+ "IOException : Exception occured while file loading.");
 			e.printStackTrace();
 		}
@@ -64,7 +65,7 @@ public class BrowserFactory {
 		String BrowserName = prop.getProperty("browser").trim();
 		int implicitWait = Integer.parseInt(prop.getProperty("ImplicitWait").trim());
 
-		logger.info("Browser Name is : " + BrowserName);
+		log.info("Browser Name is : " + BrowserName);
 
 		BROWSER_NAME = BrowserName;
 
@@ -105,7 +106,7 @@ public class BrowserFactory {
 			driver = new EdgeDriver();
 		} else {
 			System.out.println("Browser is not available to run so provide another option.");
-			logger.info("Please pass the correct browser name " + BrowserName);
+			log.info("Please pass the correct browser name " + BrowserName);
 		}
 
 		if (prop.getProperty("maximize").equalsIgnoreCase("yes")) {

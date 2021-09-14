@@ -9,9 +9,8 @@ import io.cucumber.java.en.Then;
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  * @see
- * Following script is the automation testing simulation
+ * @@Following script is the automation testing simulation
  * for the Application - "http://automationpractice.com/index.php?"
- * 
  */
 public class CreateAnAccount_StepDef extends TestContext {
 

@@ -7,13 +7,13 @@ package pageObjects;
  */
 
 import java.util.List;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import base.TestContext;
 import interfaces.Locators;
 import io.cucumber.java.Scenario;
@@ -27,24 +27,15 @@ import io.cucumber.java.Scenario;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
+@Log4j2
+@AllArgsConstructor
 public class LandingPage_PageObject extends TestContext implements Locators {
 
-	private static final Logger logger = LogManager.getLogger(LandingPage_PageObject.class);
-
-	Scenario scn;
 	WebDriver driver;
+	Scenario scn;
 	WebDriverWait wait;
 	
-	/**
-	 * It is constructor of LandingPage_PageObject class. It use to
-	 * initialize all driver, Scenario, WebDriverWait, TestContext, etc......
-	 * @author Pravinkumar D Kadam
-	 */
-	public LandingPage_PageObject(WebDriver driver, WebDriverWait wait, Scenario scn) {
-		this.driver = driver;
-		this.wait = wait;
-		this.scn = scn;
-	}
+
 	/**
 	 * Method contain one for each loop which help to fetching product category
 	 * list.
@@ -56,12 +47,12 @@ public class LandingPage_PageObject extends TestContext implements Locators {
 		List<WebElement> productList = driver.findElements(productCatageroyLocator);
 
 		scn.log("Product list :: ");
-		logger.info("Product list :: ");
+		log.info("Product list :: ");
 		for (WebElement e : productList)
 
 		{
 			scn.log("             " + e.getText());
-			logger.info("             " + e.getText());
+			log.info("             " + e.getText());
 		}
 
 	}
@@ -79,7 +70,7 @@ public class LandingPage_PageObject extends TestContext implements Locators {
 		boolean logoDisplayOrNOt = logo.isDisplayed();
 		Assert.assertTrue("Logo is not displayed.", logoDisplayOrNOt);
 		scn.log("Logo is Display :> " + logoDisplayOrNOt);
-		logger.info("Logo is Display :> " + logoDisplayOrNOt);
+		log.info("Logo is Display :> " + logoDisplayOrNOt);
 	}
 
 	/**
@@ -91,9 +82,9 @@ public class LandingPage_PageObject extends TestContext implements Locators {
 		utilities.waitForElementClickable(logoImageLocator);
 		WebElement logoSize = driver.findElement(logoImageLocator);
 		scn.log("Logo Height is :> " + logoSize.getSize().getHeight());
-		logger.info("Logo Height is :> " + logoSize.getSize().getHeight());
+		log.info("Logo Height is :> " + logoSize.getSize().getHeight());
 		scn.log("Logo Width is :> " + logoSize.getSize().getWidth());
-		logger.info("Logo Width is :> " + logoSize.getSize().getWidth());
+		log.info("Logo Width is :> " + logoSize.getSize().getWidth());
 
 	}
 
@@ -115,7 +106,7 @@ public class LandingPage_PageObject extends TestContext implements Locators {
 		
 		scn.log("User successfully assert log height and width are respectively " + logoSize.getSize().getHeight()
 				+ " and " + logoSize.getSize().getWidth());
-		logger.info("User successfully assert log height and width are respectively " + logoSize.getSize().getHeight()
+		log.info("User successfully assert log height and width are respectively " + logoSize.getSize().getHeight()
 				+ " and " + logoSize.getSize().getWidth());
 	}
 

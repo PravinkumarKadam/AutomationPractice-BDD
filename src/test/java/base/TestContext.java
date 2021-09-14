@@ -1,6 +1,9 @@
 package base;
 
 import java.util.Properties;
+
+import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import Utilities.JavaScriptUtil;
@@ -32,8 +35,9 @@ import pageObjects.ValidateYoutubeHandle_PageObject;
  * @Date: 19-August-2021
  * @Description: Test com.automationPractice-BDD FW development
  */
-public class TestContext {
 
+public class TestContext {
+	@Getter@Setter
 	public WebDriver driver;
 	public Scenario scn;
 	public WebDriverWait wait;
@@ -61,7 +65,7 @@ public class TestContext {
 	public static ValidateCartValueUpdating_PageObject validateCartValueUpdating_PageObject;
 	public static ValidateProductsAddedInCart_PageObject validateProductsAddedInCart_PageObject;
 	public static ValidateTotalCorrectInCart_PageObject validateTotalCorrectInCart_PageObject;
-        public static ValidateProductRemovedFromCart_PageObject validateProductRemovedFromCart_PageObject;
+	public static ValidateProductRemovedFromCart_PageObject validateProductRemovedFromCart_PageObject;
    
     /**
 	 * This method use open browser. It also using property file's key to open
@@ -98,7 +102,7 @@ public class TestContext {
 		screenShot = new ScreenShot(driver, scn, wait);
 
 		createAnAccountPageObject = new CreateAnAccount_PageObject(driver, scn, wait);
-		landingPagePageObject = new LandingPage_PageObject(driver, wait, scn);
+		landingPagePageObject = new LandingPage_PageObject(driver,scn,wait);
 		signInPageObjects = new SignInPage_PageObjects(driver, scn);
 		validateSearchBoxPageObject = new ValidateSearchBox_PageObject(driver, scn, wait);
 		allProductPriceAndTotal_PageObject = new AllProductPriceAndTotal_PageObject(driver, scn);
@@ -107,11 +111,13 @@ public class TestContext {
 		validateFacebookHandle_PageObject = new ValidateFacebookHandle_PageObject(driver, scn);
 		validateTwitterHandle_PageObject = new ValidateTwitterHandle_PageObject(driver, scn);
 		validateYoutubeHandle_PageObject = new ValidateYoutubeHandle_PageObject(driver, scn);
-		newsletterSubscription_PageObject = new NewsletterSubscription_PageObject(driver, scn, wait);
+		newsletterSubscription_PageObject = new NewsletterSubscription_PageObject(driver,scn, wait);
 		validateCartValueUpdating_PageObject = new ValidateCartValueUpdating_PageObject(driver, scn);
 		validateProductsAddedInCart_PageObject = new ValidateProductsAddedInCart_PageObject(driver, scn);
-		validateTotalCorrectInCart_PageObject = new ValidateTotalCorrectInCart_PageObject(driver, scn);
+		validateTotalCorrectInCart_PageObject = new ValidateTotalCorrectInCart_PageObject(driver, scn,wait);
 		validateProductRemovedFromCart_PageObject  = new ValidateProductRemovedFromCart_PageObject(driver, scn);
+
+
 	}
 
 }

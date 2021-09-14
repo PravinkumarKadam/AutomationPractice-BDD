@@ -2,6 +2,10 @@ package pageObjects;
 
 import java.util.Iterator;
 import java.util.Set;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -21,26 +25,15 @@ import io.cucumber.java.Scenario;
  * @Description: Test com.automationPractice-BDD FW development
  * @author Pravinkumar D Kadam
  */
+@Log4j2
+@AllArgsConstructor
 public class ValidateFacebookHandle_PageObject extends TestContext implements Locators, Variables {
 
-	private static final Logger logger = LogManager.getLogger(ValidateFacebookHandle_PageObject.class);
 
 	WebDriver driver;
 	Scenario scn;
 
-	/**
-	 * It is parameterized constructor of ValidateFacebookHandle_PageObject class.
-	 * It use to initialize all driver, Scenario, WebDriverWait, TestContext,
-	 * etc......
-	 * 
-	 * @param driver
-	 * @param scn
-	 * @author Pravinkumar D Kadam
-	 */
-	public ValidateFacebookHandle_PageObject(WebDriver driver, Scenario scn) {
-		this.driver = driver;
-		this.scn = scn;
-	}
+
 
 	/**
 	 * Click on facebook link 
@@ -50,7 +43,7 @@ public class ValidateFacebookHandle_PageObject extends TestContext implements Lo
 		javaScriptUtil.scrollPageDown();
 		utilities.ClickElement(FacebookHandle_Locator);
 		scn.log("Click on facebook link ");
-		logger.info("Click on facebook link ");
+		log.info("Click on facebook link ");
 
 	}
 
@@ -70,7 +63,7 @@ public class ValidateFacebookHandle_PageObject extends TestContext implements Lo
 		String ExpectedText = ValidateFacebookHandle_Variables;
 		Assert.assertEquals("Assertion failed.", ExpectedText, ActualText);
 		scn.log("Validation Facebook Handle.");
-		logger.info("Validation Facebook Handle.");
+		log.info("Validation Facebook Handle.");
 
 	}
 
