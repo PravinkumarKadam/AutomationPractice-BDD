@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="com.automationPractice-BDD" />
+        <module name="AutomationPractice-BDD" />
       </profile>
     </annotationProcessing>
   </component>

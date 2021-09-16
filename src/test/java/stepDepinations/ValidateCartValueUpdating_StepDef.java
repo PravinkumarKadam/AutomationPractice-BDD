@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
  * @Company: VisionIT
  * @Date: 10-September-2021
  * @Description: Test com.automationPractice-BDD FW development
- * @see Following script is the automation testing simulation for the
+ * @see @following script is the automation testing simulation for the
  *      Application - "http://automationpractice.com/index.php?"
  */
 public class ValidateCartValueUpdating_StepDef extends TestContext {
